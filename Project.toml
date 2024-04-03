@@ -1,0 +1,13 @@
+name = "Readability"
+uuid = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
+authors = ["Ceco E. Maples <mapleselijah9@gmail.com>"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

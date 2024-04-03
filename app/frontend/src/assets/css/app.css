@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+:root {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    font-optical-sizing: auto;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    font-size: 16px;
+    line-height: normal;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    width: 100%;
+    height: 100%;
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+[data-theme="light"] {
+    --text-color: rgb(35, 35, 50);
+    --background-color: rgb(245, 245, 255);
+    --accent-background-color: rgb(255, 255, 255);
+    --link-color: rgb(75, 75, 255);
+    --hover-color: rgba(75, 75, 255, 0.075);
+    --button-background-color-1: rgb(90, 90, 255);
+    --button-background-color-2: rgb(120, 120, 255);
+    --error-color: rgb(255, 75, 115);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+}
+
+[data-theme="dark"] {
+    --text-color: rgb(245, 245, 255);
+    --background-color: rgb(35, 35, 50);
+    --accent-background-color: rgb(45, 45, 65);
+    --link-color: rgb(170, 170, 255);
+    --hover-color: rgba(170, 170, 255, 0.075);
+    --button-background-color-1: rgb(150, 150, 255);
+    --button-background-color-2: rgb(180, 180, 255);
+    --error-color: rgb(255, 75, 115);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+}
+
+html,
+body,
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.app-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+a {
+    color: var(--link-color);
+}
+
+button {
+    color: var(--text-color);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    background: linear-gradient(0deg,
+            var(--button-background-color-1) 0%,
+            var(--button-background-color-2) 100%);
+    cursor: pointer;
+}
+
+button:hover {
+    background: linear-gradient(0deg,
+            var(--button-background-color-2) 0%,
+            var(--button-background-color-1) 100%);
+}
+
+button:active {
+    background: var(--button-background-color-2);
+    box-shadow: none;
+}

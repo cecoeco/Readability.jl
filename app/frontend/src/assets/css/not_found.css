@@ -1,0 +1,12 @@
+.notfound-heading,
+.notfound-text {
+    line-height: normal;
+}
+
+.notfound-heading {
+    font-size: 3rem;
+}
+
+.notfound-text {
+    font-size: 2rem;
+}
