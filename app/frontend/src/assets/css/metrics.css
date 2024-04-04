@@ -1,0 +1,139 @@
+.metrics-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.textarea-container,
+.metrics-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    height: 100%;
+}
+
+textarea {
+    font-size: 1.1rem;
+    font-family: "Times New Roman", serif;
+    background-color: var(--accent-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    resize: none;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    transition: box-shadow 0.3s ease;
+}
+
+textarea:focus,
+textarea:active {
+    border: 1px solid var(--border-color-focused);
+    box-shadow: 0px 0px 2px 3px var(--box-shadow-focused);
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 360px;
+    background: var(--accent-background-color);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.3s ease;
+    box-shadow: none;
+}
+
+.dropdown-button:hover {
+    background: var(--accent-background-color);
+}
+
+.dropdown-button:focus {
+    background: var(--accent-background-color);
+    border: 1px solid var(--border-color-focused);
+    box-shadow: 0 0 2px 3px var(--box-shadow-focused);
+}
+
+.dropdown-button-label {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    font-weight: 200;
+    cursor: inherit;
+}
+
+.dropdown-button-chevron {
+    fill: var(--text-color);
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-button-chevron.rotated {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--accent-background-color);
+    width: fit-content;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    width: 360px;
+    z-index: 1;
+}
+
+.dropdown-content.open {
+    display: block;
+}
+
+.dropdown-content label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-content input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.dropdown-content label:hover {
+    background-color: var(--hover-color);
+}
+
+.metrics-h3 {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.info-button {
+    display: flex;
+    background: inherit;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: none;
+    padding: 4px;
+}
+
+.info-button:hover {
+    background: var(--hover-color);
+}
+
+.info-button:active {
+    background: none;
+}
+
+.info-icon {
+    width: .95rem;
+    height: .95rem;
+    fill: var(--text-color);
+}

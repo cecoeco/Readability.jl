@@ -1,12 +1,4 @@
-.notfound-heading,
-.notfound-text {
-    line-height: normal;
-}
-
-.notfound-heading {
-    font-size: 3rem;
-}
-
-.notfound-text {
+.notfound-message {
+    font-weight: 300;
     font-size: 2rem;
 }

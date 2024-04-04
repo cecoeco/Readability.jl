@@ -12,19 +12,10 @@ header {
     width: 95%;
     padding: 0 2.5%;
     min-height: 50px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+    box-shadow: var(--shadow);
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    width: 35%;
-}
-
-.nav-link {
+header a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,11 +25,6 @@ nav {
     width: fit-content;
     text-decoration: none;
     color: var(--text-color);
-}
-
-.nav-link-active {
-    color: var(--link-color);
-    background-color: var(--hover-color);
 }
 
 .theme-button {
@@ -53,6 +39,10 @@ nav {
 
 .theme-button:hover {
     background: var(--hover-color);
+}
+
+.theme-button:active {
+    background: none;
 }
 
 .theme-button-icon {

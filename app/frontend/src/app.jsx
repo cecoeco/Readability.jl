@@ -3,11 +3,10 @@ import "./assets/css/app.css";
 import { Router, Route } from "@solidjs/router";
 import { render } from "solid-js/web";
 
-import Header from "./components/header.jsx";
-import Footer from "./components/footer.jsx";
+import Header from "./layouts/header.jsx";
+import Footer from "./layouts/footer.jsx";
 
-import Home from "./pages/home.jsx";
-import UploadPaper from "./pages/upload_paper.jsx";
+import Metrics from "./pages/metrics";
 import NotFound from "./pages/not_found.jsx";
 
 /**
@@ -34,8 +33,8 @@ function AppLayout(props) {
 function App() {
   return (
     <Router root={AppLayout}>
-      <Route path="/" component={Home} />
-      <Route path="/upload-paper" component={UploadPaper} />
+      <Route path="/" component={Metrics} />
+      <Route path="/metrics" component={Metrics} />
       <Route path="/*" component={NotFound} />
     </Router>
   );
