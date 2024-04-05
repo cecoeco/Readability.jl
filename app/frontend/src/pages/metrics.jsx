@@ -1,13 +1,17 @@
-import "../assets/css/metrics.css";
-import "../assets/css/modal.css";
 import { createSignal, createEffect } from "solid-js";
+
+import "../assets/css/metrics.css";
 import Chevron from "../assets/svg/chevron.svg";
 import Info from "../assets/svg/info.svg";
+
+import "../assets/css/modal.css";
 import ARI from "../components/ari.jsx";
+import AverageReadingTime from "../components/average_reading_time.jsx";
+import AverageSpeakingTime from "../components/average_speaking_time.jsx";
 import ColemanLiau from "../components/coleman-liau.jsx";
 import DaleChall from "../components/dale-chall.jsx";
-import FleschReadingEase from "../components/flesch.jsx";
-import FleschKincaidGradeLevel from "../components/flesch-kincaid.jsx";
+import FRES from "../components/fres.jsx";
+import FKGL from "../components/fkgl.jsx";
 import GunningFog from "../components/gunning_fog.jsx";
 import SMOG from "../components/smog.jsx";
 import Spache from "../components/spache.jsx";
@@ -19,17 +23,17 @@ function Metrics() {
         "Automatic Readability Index (ARI)",
         "Average Reading Time",
         "Average Speaking Time",
-        "Character Count",
+        "Characters",
         "Coleman-Liau",
         "Dale-Chall",
         "Flesch Reading Ease Score",
         "Flesch-Kincaid Grade Level",
         "Gunning Fog",
-        "Sentence Count",
+        "Sentences",
         "Simple Measure of Gobbledygook (SMOG)",
         "Spache",
-        "Syllable Count",
-        "Word Count"
+        "Syllables",
+        "Words"
     ]));
 
     const toggleDropdown = () => {
@@ -52,17 +56,17 @@ function Metrics() {
             "Automatic Readability Index (ARI)",
             "Average Reading Time",
             "Average Speaking Time",
-            "Character Count",
+            "Characters",
             "Coleman-Liau",
             "Dale-Chall",
             "Flesch Reading Ease Score",
             "Flesch-Kincaid Grade Level",
             "Gunning Fog",
-            "Sentence Count",
+            "Sentences",
             "Simple Measure of Gobbledygook (SMOG)",
             "Spache",
-            "Syllable Count",
-            "Word Count"
+            "Syllables",
+            "Words"
         ]);
         setSelectedMetrics(allMetrics);
     };
@@ -100,6 +104,16 @@ function Metrics() {
         setShowARI(true);
     }
 
+    const [showAverageReadingTime, setShowAverageReadingTime] = createSignal(false);
+    function openAverageReadingTimeModal() {
+        setShowAverageReadingTime(true);
+    }
+
+    const [showAverageSpeakingTime, setShowAverageSpeakingTime] = createSignal(false);
+    function openAverageSpeakingTimeModal() {
+        setShowAverageSpeakingTime(true);
+    }
+
     const [showColemanLiau, setShowColemanLiau] = createSignal(false);
     function openColemanLiauModal() {
         setShowColemanLiau(true);
@@ -111,12 +125,12 @@ function Metrics() {
     }
 
     const [showFlesch, setShowFlesch] = createSignal(false);
-    function openFleschReadingEaseModal() {
+    function openFRESModal() {
         setShowFlesch(true);
     }
 
     const [showFleschKincaid, setShowFleschKincaid] = createSignal(false);
-    function openFleschKincaidGradeLevelModal() {
+    function openFKGLModal() {
         setShowFleschKincaid(true);
     }
 
@@ -135,8 +149,106 @@ function Metrics() {
         setShowSpache(true);
     }
 
+    const [metricResponses, setMetricResponses] = createSignal({
+        "Automatic Readability Index (ARI)": 0,
+        "Average Reading Time": 0,
+        "Average Speaking Time": 0,
+        "Characters": 0,
+        "Coleman-Liau": 0,
+        "Dale-Chall": 0,
+        "Flesch Reading Ease Score": 0,
+        "Flesch-Kincaid Grade Level": 0,
+        "Gunning Fog": 0,
+        "Sentences": 0,
+        "Simple Measure of Gobbledygook (SMOG)": 0,
+        "Spache": 0,
+        "Syllables": 0,
+        "Words": 0,
+    });
+
+    async function postData(metricType, route) {
+        const text = document.querySelector("textarea").value;
+        const endpoint = `http://127.0.0.1:5050/${route}`;
+        try {
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: text,
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const responseData = await response.text();
+            setMetricResponses((prevResponses) => ({
+                ...prevResponses,
+                [metricType]: responseData,
+            }));
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    async function onTextChange() {
+        const metrics = [
+            "Automatic Readability Index (ARI)",
+            "Average Reading Time",
+            "Average Speaking Time",
+            "Characters",
+            "Coleman-Liau",
+            "Dale-Chall",
+            "Flesch Reading Ease Score",
+            "Flesch-Kincaid Grade Level",
+            "Gunning Fog",
+            "Sentences",
+            "Simple Measure of Gobbledygook (SMOG)",
+            "Spache",
+            "Syllables",
+            "Words",
+        ];
+
+        const routes = [
+            "ari",
+            "average_reading_time",
+            "average_speaking_time",
+            "characters",
+            "coleman-liau",
+            "dale-chall",
+            "fres",
+            "fkgl",
+            "gunning_fog",
+            "sentences",
+            "smog",
+            "spache",
+            "syllables",
+            "words",
+        ];
+
+        for (let i = 0; i < metrics.length; i++) {
+            const metric = metrics[i];
+            const route = routes[i];
+            await postData(metric, route);
+        }
+    }
+
     function downloadMetrics() {
-        // Logic to handle downloading metrics
+        const data = metricResponses();
+        const csvContent =
+            "data:text/csv;charset=utf-8," +
+            "metric,value\n" +
+            Object.keys(data)
+                .map((key) => {
+                    return `${key},${data[key]}`;
+                })
+                .join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "readability.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     return (
@@ -144,17 +256,23 @@ function Metrics() {
             <ARI
                 showARIModal={[showARI, setShowARI]}
             />
+            <AverageReadingTime
+                showAverageReadingTimeModal={[showAverageReadingTime, setShowAverageReadingTime]}
+            />
+            <AverageSpeakingTime
+                showAverageSpeakingTimeModal={[showAverageSpeakingTime, setShowAverageSpeakingTime]}
+            />
             <ColemanLiau
                 showColemanLiauModal={[showColemanLiau, setShowColemanLiau]}
             />
             <DaleChall
                 showDaleChallModal={[showDaleChall, setShowDaleChall]}
             />
-            <FleschReadingEase
-                showFleschReadingEaseModal={[showFlesch, setShowFlesch]}
+            <FRES
+                showFRESModal={[showFlesch, setShowFlesch]}
             />
-            <FleschKincaidGradeLevel
-                showFleschKincaidGradeLevelModal={[showFleschKincaid, setShowFleschKincaid]}
+            <FKGL
+                showFKGLModal={[showFleschKincaid, setShowFleschKincaid]}
             />
             <GunningFog
                 showGunningFogModal={[showGunningFog, setShowGunningFog]}
@@ -167,7 +285,12 @@ function Metrics() {
             />
             <div class="metrics-page">
                 <div class="textarea-container">
-                    <textarea name="text" placeholder="Type here..." />
+                    <textarea
+                        title="Type here..."
+                        name="Type here..."
+                        placeholder="Type here..."
+                        onChange={onTextChange}
+                    />
                 </div>
                 <div class="metrics-container">
                     <div class="dropdown">
@@ -190,7 +313,7 @@ function Metrics() {
                             />
                         </button>
                         <div
-                            class={`dropdown-content ${isDropdownOpen() ? "open" : ""}`}
+                            class={`dropdown-content ${isDropdownOpen() ? "open" : 0}`}
                         >
                             <label>
                                 <input
@@ -206,17 +329,17 @@ function Metrics() {
                                 "Automatic Readability Index (ARI)",
                                 "Average Reading Time",
                                 "Average Speaking Time",
-                                "Character Count",
+                                "Characters",
                                 "Coleman-Liau",
                                 "Dale-Chall",
                                 "Flesch Reading Ease Score",
                                 "Flesch-Kincaid Grade Level",
                                 "Gunning Fog",
-                                "Sentence Count",
+                                "Sentences",
                                 "Simple Measure of Gobbledygook (SMOG)",
                                 "Spache",
-                                "Syllable Count",
-                                "Word Count",
+                                "Syllables",
+                                "Words",
                             ].map((metric) => (
                                 <label>
                                     <input
@@ -233,50 +356,60 @@ function Metrics() {
                     </div>
                     {Array.from(selectedMetrics()).map((metric) =>
                         (
-                            metric === "Average Reading Time" ||
-                            metric === "Average Speaking Time" ||
-                            metric === "Character Count" ||
-                            metric === "Sentence Count" ||
-                            metric === "Syllable Count" ||
-                            metric === "Word Count"
+                            metric === "Characters" ||
+                            metric === "Sentences" ||
+                            metric === "Syllables" ||
+                            metric === "Words"
                         ) ? (
-                            <h3 class="metrics-h3">{metric}</h3>
+                            <div title={metric} class="metric">
+                                <h1>{metric}</h1>
+                                <div class="metric-value">{metricResponses()[metric]}</div>
+                            </div>
                         ) : (
-                            <h3 class="metrics-h3">
-                                <span>{metric}</span>
-                                <button class="info-button" onClick={() => {
-                                    switch (metric) {
-                                        case "Automatic Readability Index (ARI)":
-                                            openARIModal();
-                                            break;
-                                        case "Coleman-Liau":
-                                            openColemanLiauModal();
-                                            break;
-                                        case "Dale-Chall":
-                                            openDaleChallModal();
-                                            break;
-                                        case "Flesch Reading Ease Score":
-                                            openFleschReadingEaseModal();
-                                            break;
-                                        case "Flesch-Kincaid Grade Level":
-                                            openFleschKincaidGradeLevelModal();
-                                            break;
-                                        case "Gunning Fog":
-                                            openGunningFogModal();
-                                            break;
-                                        case "Simple Measure of Gobbledygook (SMOG)":
-                                            openSMOGModal();
-                                            break;
-                                        case "Spache":
-                                            openSpacheModal();
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }}>
-                                    <Info class="info-icon" />
-                                </button>
-                            </h3>
+                            <div title={metric} class="metric">
+                                <div class="metric-name">
+                                    <h1>{metric}</h1>
+                                    <button class="info-button" onClick={() => {
+                                        switch (metric) {
+                                            case "Automatic Readability Index (ARI)":
+                                                openARIModal();
+                                                break;
+                                            case "Average Reading Time":
+                                                openAverageReadingTimeModal();
+                                                break;
+                                            case "Average Speaking Time":
+                                                openAverageSpeakingTimeModal();
+                                                break;
+                                            case "Coleman-Liau":
+                                                openColemanLiauModal();
+                                                break;
+                                            case "Dale-Chall":
+                                                openDaleChallModal();
+                                                break;
+                                            case "Flesch Reading Ease Score":
+                                                openFRESModal();
+                                                break;
+                                            case "Flesch-Kincaid Grade Level":
+                                                openFKGLModal();
+                                                break;
+                                            case "Gunning Fog":
+                                                openGunningFogModal();
+                                                break;
+                                            case "Simple Measure of Gobbledygook (SMOG)":
+                                                openSMOGModal();
+                                                break;
+                                            case "Spache":
+                                                openSpacheModal();
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }}>
+                                        <Info class="info-icon" />
+                                    </button>
+                                </div>
+                                <div class="metric-value">{metricResponses()[metric]}</div>
+                            </div>
                         )
                     )}
                     <button

@@ -22,20 +22,88 @@ function CorsHandler(handle)
     end
 end
 
-## Routes
-include("routes/ari.jl")
-include("routes/average_reading_time.jl")
-include("routes/average_speaking_time.jl")
-include("routes/character_count.jl")
-include("routes/coleman-liau.jl")
-include("routes/dale-chall.jl")
-include("routes/flesch_reading_ease.jl")
-include("routes/flesch-kincaid_grade_level.jl")
-include("routes/gunning_fog.jl")
-include("routes/sentence_count.jl")
-include("routes/smog.jl")
-include("routes/spache.jl")
-include("routes/syllable_count.jl")
-include("routes/word_count.jl")
+post("/ari") do req::HTTP.Request
+    text = String(req.body)
+    metric = ARI(text)
+    return metric
+end
+
+post("/average_reading_time") do req::HTTP.Request
+    text = String(req.body)
+    metric = reading_time(text)
+    return metric
+end
+
+post("/average_speaking_time") do req::HTTP.Request
+    text = String(req.body)
+    metric = speaking_time(text)
+    return metric
+end
+
+post("/characters") do req::HTTP.Request
+    text = String(req.body)
+    metric = characters(text)
+    return metric
+end
+
+post("/coleman-liau") do req::HTTP.Request
+    text = String(req.body)
+    metric = ColemanLiau(text)
+    return metric
+end
+
+post("/dale-chall") do req::HTTP.Request
+    text = String(req.body)
+    metric = DaleChall(text)
+    return metric
+end
+
+post("/fres") do req::HTTP.Request
+    text = String(req.body)
+    metric = FleschReadingEase(text)
+    return metric
+end
+
+post("/fkgl") do req::HTTP.Request
+    text = String(req.body)
+    metric = FleschKincaidGradeLevel(text)
+    return metric
+end
+
+post("/gunning_fog") do req::HTTP.Request
+    text = String(req.body)
+    metric = GunningFog(text)
+    return metric
+end
+
+post("/sentences") do req::HTTP.Request
+    text = String(req.body)
+    metric = sentences(text)
+    return metric
+end
+
+post("/smog") do req::HTTP.Request
+    text = String(req.body)
+    metric = SMOG(text)
+    return metric
+end
+
+post("/spache") do req::HTTP.Request
+    text = String(req.body)
+    metric = Spache(text)
+    return metric
+end
+
+post("/syllables") do req::HTTP.Request
+    text = String(req.body)
+    metric = syllables(text)
+    return metric
+end
+
+post("/words") do req::HTTP.Request
+    text = String(req.body)
+    metric = words(text)
+    return metric
+end
 
 Oxygen.serve(port=5050, middleware=[CorsHandler])
