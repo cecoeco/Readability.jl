@@ -1,22 +1,11 @@
-function count_complex_words(text::String)
-    words::Vector{String} = split(text)
-    complex_count::Int = 0
-    for word in words
-        syllable_count::Int = count_syllables(word)
-        if syllable_count >= 3 && !any(x -> occursin(x, word), ['-', "es", "ed", "ing"])
-            complex_count += 1
-        end
-    end
-    return complex_count
-end
+function GunningFog(text::String)
+    total_words::Int = words(text)
+    total_sentences::Int = sentences(text)
+    total_complex_words::Int = complex_words(text)
 
-function gunning_fog(text::String)
-    words::Vector{String} = split(text)
-    sentences::Vector{String} = split(text, ['.', '!', '?'])
-    word_count::Int = length(words)
-    sentence_count::Int = length(sentences)
-    complex_word_count::Int = count_complex_words(text)
+    words_per_sentence::Float64 = (total_words / total_sentences)
+    percentage_of_complex_words::Float64 = 100 * (total_complex_words / total_words)
 
-    fog_index = 0.4 * ((word_count / sentence_count) + 100 * (complex_word_count / word_count))
+    fog_index::Float64 = 0.4 * (words_per_sentence + percentage_of_complex_words)
     return fog_index
 end

@@ -1,7 +1,12 @@
-function ari(text::String)
-    character_count::Int = length(text)
-    word_count::Int = length(split(text))
-    sentence_count = length(split(text, ['.', '!', '?']))
-    grade = 4.71 * (character_count / word_count) + 0.5 * (word_count / sentence_count) - 21.43
-    return ceil(Int, grade)
+function ARI(text::String)
+    total_characters::Int = characters(text)
+    total_words::Int = words(text)
+    total_sentences::Int = sentences(text)
+
+    characters_per_word::Float64 = total_characters / total_words
+    words_per_sentence::Float64 = total_words / total_sentences
+
+    grade::Float64 = 4.71 * characters_per_word + 0.5 * words_per_sentence - 21.43
+    grade = Base.ceil(Int, grade)
+    return grade
 end
