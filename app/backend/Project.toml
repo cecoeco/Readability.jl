@@ -6,5 +6,5 @@ Readability = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
 [compat]
 Oxygen = "1"
 HTTP = "1"
-Readability = "0.1"
+Readability = "0.2"
 julia = "1"
