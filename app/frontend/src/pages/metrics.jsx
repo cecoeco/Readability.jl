@@ -284,14 +284,12 @@ function Metrics() {
                 showSpacheModal={[showSpache, setShowSpache]}
             />
             <div class="metrics-page">
-                <div class="textarea-container">
-                    <textarea
-                        title="Type here..."
-                        name="Type here..."
-                        placeholder="Type here..."
-                        onChange={onTextChange}
-                    />
-                </div>
+                <textarea
+                    title="Type here..."
+                    name="Type here..."
+                    placeholder="Type here..."
+                    onChange={onTextChange}
+                />
                 <div class="metrics-container">
                     <div class="dropdown">
                         <button
@@ -315,7 +313,7 @@ function Metrics() {
                         <div
                             class={`dropdown-content ${isDropdownOpen() ? "open" : 0}`}
                         >
-                            <label>
+                            <label class="dropdown-label">
                                 <input
                                     name="Select All"
                                     title="Select All"
@@ -341,7 +339,7 @@ function Metrics() {
                                 "Syllables",
                                 "Words",
                             ].map((metric) => (
-                                <label>
+                                <label class="dropdown-label">
                                     <input
                                         name={metric}
                                         title={metric}
@@ -354,64 +352,66 @@ function Metrics() {
                             ))}
                         </div>
                     </div>
-                    {Array.from(selectedMetrics()).map((metric) =>
-                        (
-                            metric === "Characters" ||
-                            metric === "Sentences" ||
-                            metric === "Syllables" ||
-                            metric === "Words"
-                        ) ? (
-                            <div title={metric} class="metric">
-                                <h1>{metric}</h1>
-                                <div class="metric-value">{metricResponses()[metric]}</div>
-                            </div>
-                        ) : (
-                            <div title={metric} class="metric">
-                                <div class="metric-name">
+                    <div class="metrics">
+                        {Array.from(selectedMetrics()).map((metric) =>
+                            (
+                                metric === "Characters" ||
+                                metric === "Sentences" ||
+                                metric === "Syllables" ||
+                                metric === "Words"
+                            ) ? (
+                                <div title={metric} class="metric">
                                     <h1>{metric}</h1>
-                                    <button class="info-button" onClick={() => {
-                                        switch (metric) {
-                                            case "Automatic Readability Index (ARI)":
-                                                openARIModal();
-                                                break;
-                                            case "Average Reading Time":
-                                                openAverageReadingTimeModal();
-                                                break;
-                                            case "Average Speaking Time":
-                                                openAverageSpeakingTimeModal();
-                                                break;
-                                            case "Coleman-Liau":
-                                                openColemanLiauModal();
-                                                break;
-                                            case "Dale-Chall":
-                                                openDaleChallModal();
-                                                break;
-                                            case "Flesch Reading Ease Score":
-                                                openFRESModal();
-                                                break;
-                                            case "Flesch-Kincaid Grade Level":
-                                                openFKGLModal();
-                                                break;
-                                            case "Gunning Fog":
-                                                openGunningFogModal();
-                                                break;
-                                            case "Simple Measure of Gobbledygook (SMOG)":
-                                                openSMOGModal();
-                                                break;
-                                            case "Spache":
-                                                openSpacheModal();
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    }}>
-                                        <Info class="info-icon" />
-                                    </button>
+                                    <div class="metric-value">{metricResponses()[metric]}</div>
                                 </div>
-                                <div class="metric-value">{metricResponses()[metric]}</div>
-                            </div>
-                        )
-                    )}
+                            ) : (
+                                <div title={metric} class="metric">
+                                    <div class="metric-name">
+                                        <h1>{metric}</h1>
+                                        <button class="info-button" onClick={() => {
+                                            switch (metric) {
+                                                case "Automatic Readability Index (ARI)":
+                                                    openARIModal();
+                                                    break;
+                                                case "Average Reading Time":
+                                                    openAverageReadingTimeModal();
+                                                    break;
+                                                case "Average Speaking Time":
+                                                    openAverageSpeakingTimeModal();
+                                                    break;
+                                                case "Coleman-Liau":
+                                                    openColemanLiauModal();
+                                                    break;
+                                                case "Dale-Chall":
+                                                    openDaleChallModal();
+                                                    break;
+                                                case "Flesch Reading Ease Score":
+                                                    openFRESModal();
+                                                    break;
+                                                case "Flesch-Kincaid Grade Level":
+                                                    openFKGLModal();
+                                                    break;
+                                                case "Gunning Fog":
+                                                    openGunningFogModal();
+                                                    break;
+                                                case "Simple Measure of Gobbledygook (SMOG)":
+                                                    openSMOGModal();
+                                                    break;
+                                                case "Spache":
+                                                    openSpacheModal();
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }}>
+                                            <Info class="info-icon" />
+                                        </button>
+                                    </div>
+                                    <div class="metric-value">{metricResponses()[metric]}</div>
+                                </div>
+                            )
+                        )}
+                    </div>
                     <button
                         title="Download Metrics"
                         type="button"

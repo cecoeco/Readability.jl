@@ -1,34 +1,36 @@
 .metrics-page {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 100%;
 }
 
-.textarea-container,
+textarea,
 .metrics-container {
     display: flex;
+    width: 35%;
+    height: 90%;
+    padding: 20px;
+    background-color: var(--accent-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.metrics-container {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 45%;
-    height: 100%;
 }
 
 textarea {
     font-size: 1.1rem;
     font-family: "Times New Roman", serif;
-    background-color: var(--accent-background-color);
     color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
     resize: none;
     overflow: auto;
-    padding: 20px;
-    width: calc(100% - 40px);
-    height: 100%;
     transition: box-shadow 0.3s ease;
 }
 
@@ -38,11 +40,42 @@ textarea:active {
     box-shadow: 0px 0px 2px 3px var(--box-shadow-focused);
 }
 
+textarea::-webkit-scrollbar {
+    width: 15px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background: var(--accent-background-color);
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+.metrics {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
+.metrics {
+    width: 29vw;
+}
+
+.dropdown,
+.dropdown-button, 
+.dropdown-content,
+.dropdown-button-label {
+    width: 30vw;
+}
+
 .dropdown-button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 360px;
+    justify-content: space-evenly;
     background: var(--accent-background-color);
     border: 1px solid var(--border-color);
     transition: box-shadow 0.3s ease;
@@ -83,19 +116,17 @@ textarea:active {
     display: none;
     position: absolute;
     background-color: var(--accent-background-color);
-    width: fit-content;
     box-shadow: var(--shadow);
     border-radius: 5px;
-    width: 360px;
     z-index: 1;
 }
 
 .dropdown-content.open {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .dropdown-content label {
-    display: block;
     padding: 10px;
     cursor: pointer;
 }

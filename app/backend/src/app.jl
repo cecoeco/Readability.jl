@@ -1,5 +1,8 @@
 using Oxygen
 using HTTP
+
+using Pkg
+Pkg.add(url="https://github.com/cecoeco/Readability.jl.git")
 using Readability
 
 const ALLOWED_ORIGINS = ["Access-Control-Allow-Origin" => "*"]
