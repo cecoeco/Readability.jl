@@ -1,19 +1,25 @@
 import { Show } from "solid-js/web";
+import X from "../assets/svg/x.svg";
 
-function AverageSpeakingTime(props) {
-    const [showAverageSpeakingTimeModal, setShowAverageSpeakingTimeModal] = props.showAverageSpeakingTimeModal;
+function Speaking(props) {
+    const [showSpeakingModal, setShowSpeakingModal] = props.showSpeakingModal;
 
-    function closeAverageSpeakingTimeModal() {
-        setShowAverageSpeakingTimeModal(false);
+    function closeSpeakingModal() {
+        setShowSpeakingModal(false);
     }
 
     return (
-        <Show when={showAverageSpeakingTimeModal()}>
-            <div class="modal-background" onClick={closeAverageSpeakingTimeModal}>
-                
+        <Show when={showSpeakingModal()}>
+            <div class="modal-background" onClick={closeSpeakingModal}>
+                <div class="modal">
+                    <X class="x" />
+                    <h1></h1>
+                    <p class="math"></p>
+                    <p class="apa-citation"></p>
+                </div>
             </div>
         </Show>
-    )
+    );
 }
 
-export default AverageSpeakingTime;
+export default Speaking;

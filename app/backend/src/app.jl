@@ -1,16 +1,15 @@
 using Oxygen
 using HTTP
-
-using Pkg
-Pkg.add(url="https://github.com/cecoeco/Readability.jl.git")
 using Readability
 
-const ALLOWED_ORIGINS = ["Access-Control-Allow-Origin" => "*"]
+const ALLOWED_ORIGINS::Vector{Pair{String, String}} = [
+    "Access-Control-Allow-Origin" => "*"
+]
 
-const CORS_HEADERS = [
+const CORS_HEADERS::Vector{Pair{String,String}} = [
     ALLOWED_ORIGINS...,
     "Access-Control-Allow-Headers" => "*",
-    "Access-Control-Allow-Methods" => "GET, POST"
+    "Access-Control-Allow-Methods" => "GET, Oxygen.post"
 ]
 
 function CorsHandler(handle)
@@ -19,94 +18,80 @@ function CorsHandler(handle)
             return HTTP.Response(200, CORS_HEADERS)
         else
             r = handle(req)
-            append!(r.headers, ALLOWED_ORIGINS)
+            Base.append!(r.headers, ALLOWED_ORIGINS)
             return r
         end
     end
 end
 
-post("/ari") do req::HTTP.Request
-    text = String(req.body)
-    metric = ARI(text)
-    return metric
+Oxygen.post("/ari") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.ARI(text)
 end
 
-post("/average_reading_time") do req::HTTP.Request
-    text = String(req.body)
-    metric = reading_time(text)
-    return metric
+Oxygen.post("/average_reading_time") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.reading_time(text)
 end
 
-post("/average_speaking_time") do req::HTTP.Request
-    text = String(req.body)
-    metric = speaking_time(text)
-    return metric
+Oxygen.post("/average_speaking_time") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.speaking_time(text)
 end
 
-post("/characters") do req::HTTP.Request
-    text = String(req.body)
-    metric = characters(text)
-    return metric
+Oxygen.post("/characters") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.characters(text)
 end
 
-post("/coleman-liau") do req::HTTP.Request
-    text = String(req.body)
-    metric = ColemanLiau(text)
-    return metric
+Oxygen.post("/coleman-liau") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.ColemanLiau(text)
 end
 
-post("/dale-chall") do req::HTTP.Request
-    text = String(req.body)
-    metric = DaleChall(text)
-    return metric
+Oxygen.post("/dale-chall") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.DaleChall(text)
 end
 
-post("/fres") do req::HTTP.Request
-    text = String(req.body)
-    metric = FleschReadingEase(text)
-    return metric
+Oxygen.post("/fres") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.FleschReadingEase(text)
 end
 
-post("/fkgl") do req::HTTP.Request
-    text = String(req.body)
-    metric = FleschKincaidGradeLevel(text)
-    return metric
+Oxygen.post("/fkgl") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.FleschKincaidGradeLevel(text)
 end
 
-post("/gunning_fog") do req::HTTP.Request
-    text = String(req.body)
-    metric = GunningFog(text)
-    return metric
+Oxygen.post("/gunning_fog") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.GunningFog(text)
 end
 
-post("/sentences") do req::HTTP.Request
-    text = String(req.body)
-    metric = sentences(text)
-    return metric
+Oxygen.post("/sentences") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.sentences(text)
 end
 
-post("/smog") do req::HTTP.Request
-    text = String(req.body)
-    metric = SMOG(text)
-    return metric
+Oxygen.post("/smog") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.SMOG(text)
 end
 
-post("/spache") do req::HTTP.Request
-    text = String(req.body)
-    metric = Spache(text)
-    return metric
+Oxygen.post("/spache") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.Spache(text)
 end
 
-post("/syllables") do req::HTTP.Request
-    text = String(req.body)
-    metric = syllables(text)
-    return metric
+Oxygen.post("/syllables") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.syllables(text)
 end
 
-post("/words") do req::HTTP.Request
-    text = String(req.body)
-    metric = words(text)
-    return metric
+Oxygen.post("/words") do req::HTTP.Request
+    text::String = Base.String(req.body)
+    return Readability.words(text)
 end
 
 Oxygen.serve(port=5050, middleware=[CorsHandler])

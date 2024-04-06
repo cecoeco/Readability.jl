@@ -7,6 +7,6 @@ function ARI(text::String)
     words_per_sentence::Float64 = total_words / total_sentences
 
     grade::Float64 = 4.71 * characters_per_word + 0.5 * words_per_sentence - 21.43
-    grade = Base.ceil(Int, grade)
-    return grade
+    grade_rounded::Int = Base.ceil(Int, grade)
+    return grade_rounded
 end

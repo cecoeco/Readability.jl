@@ -3,8 +3,8 @@ import "./assets/css/app.css";
 import { Router, Route } from "@solidjs/router";
 import { render } from "solid-js/web";
 
-import Header from "./layouts/header.jsx";
-import Footer from "./layouts/footer.jsx";
+import Header from "./components/header.jsx";
+import Footer from "./components/footer.jsx";
 
 import Metrics from "./pages/metrics";
 import NotFound from "./pages/not_found.jsx";

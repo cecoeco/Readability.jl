@@ -1,17 +1,25 @@
 import { Show } from "solid-js/web";
+import X from "../assets/svg/x.svg";
 
-function GunningFog(props) {
-    const [showGunningFogModal, setShowGunningFogModal] = props.showGunningFogModal;
+function GF(props) {
+    const [showGFModal, setShowGFModal] = props.showGFModal;
 
-    function closeGunningFogModal() {
-        setShowGunningFogModal(false);
+    function closeGFModal() {
+        setShowGFModal(false);
     }
 
     return (
-        <Show when={showGunningFogModal()}>
-            <div class="modal-background" onClick={closeGunningFogModal}></div>
+        <Show when={showGFModal()}>
+            <div class="modal-background" onClick={closeGFModal}>
+                <div class="modal">
+                    <X class="x" />
+                    <h1></h1>
+                    <p class="math"></p>
+                    <p class="apa-citation"></p>
+                </div>
+            </div>
         </Show>
-    )
+    );
 }
 
-export default GunningFog;
+export default GF;

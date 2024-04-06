@@ -24,7 +24,7 @@
     --text-color: rgb(35, 35, 50);
     --background-color: rgb(245, 245, 255);
     --accent-background-color: rgb(255, 255, 255);
-    --modal-background-color: rgba(30, 30, 30, 0.5);
+    --modal-background-color: rgba(30, 30, 30, 0.75);
     --placeholder-color: rgb(200, 200, 200);
     --border-color: rgb(220, 220, 220);
     --border-color-focused: rgb(145, 145, 255);
@@ -41,7 +41,7 @@
     --text-color: rgb(245, 245, 255);
     --background-color: rgb(35, 35, 50);
     --accent-background-color: rgb(45, 45, 65);
-    --modal-background-color: rgba(10, 10, 10, 0.5);
+    --modal-background-color: rgba(10, 10, 10, 0.75);
     --placeholder-color: rgb(75, 75, 100);
     --border-color: rgb(60, 60, 80);
     --border-color-focused: rgb(200, 200, 255);

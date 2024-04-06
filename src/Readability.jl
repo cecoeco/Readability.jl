@@ -12,14 +12,6 @@ export GunningFog
 export SMOG
 export Spache
 
-# DaleChall and Spache
-function readwordlist(path::String)::Vector{String}
-    file::IOStream = Base.open(path, "r")
-    words::Vector{String} = Base.readlines(file)
-    Base.close(file)
-    return words
-end
-
 include("ari.jl") # Automatic Readability Index
 include("coleman-liau.jl")
 include("counts.jl")
@@ -32,7 +24,6 @@ include("time.jl")
 
 end
 
-#=
 txt = "
 Pride and Prejudice by Jane Austen
 Chapter 1
@@ -168,14 +159,16 @@ metric_05 = Readability.syllables(txt)
 metric_06 = Readability.words(txt)
 metric_07 = Readability.complex_words(txt)
 metric_08 = Readability.polysyllabic_words(txt)
-metric_09 = Readability.ARI(txt)
-metric_10 = Readability.ColemanLiau(txt)
-metric_11 = Readability.DaleChall(txt)
-metric_12 = Readability.FleschReadingEase(txt)
-metric_13 = Readability.FleschKincaidGradeLevel(txt)
-metric_14 = Readability.GunningFog(txt)
-metric_15 = Readability.SMOG(txt)
-metric_16 = Readability.Spache(txt)
+metric_09 = Readability.difficult_words(txt, "dale-chall")
+metric_10 = Readability.difficult_words(txt, "spache")
+metric_11 = Readability.ARI(txt)
+metric_12 = Readability.ColemanLiau(txt)
+metric_13 = Readability.DaleChall(txt)
+metric_14 = Readability.FleschReadingEase(txt)
+metric_15 = Readability.FleschKincaidGradeLevel(txt)
+metric_16 = Readability.GunningFog(txt)
+metric_17 = Readability.SMOG(txt)
+metric_18 = Readability.Spache(txt)
 
 println("reading time: $metric_01 seconds")
 println("speaking time: $metric_02 seconds")
@@ -185,12 +178,13 @@ println("syllables: $metric_05")
 println("words: $metric_06")
 println("complex words: $metric_07")
 println("polysyllabic words: $metric_08")
-println("ARI: $metric_09")
-println("Coleman-Liau: $metric_10")
-println("Dale-Chall: $metric_11")
-println("Flesch Reading Ease Score: $metric_12")
-println("Flesch-Kincaid Grade Level: $metric_13")
-println("Gunning Fog: $metric_14")
-println("SMOG: $metric_15")
-println("Spache: $metric_16")
-=#
+println("difficult dale-chall words: $metric_09")
+println("difficult spache words: $metric_10")
+println("ARI: $metric_11")
+println("Coleman-Liau: $metric_12")
+println("Dale-Chall: $metric_13")
+println("Flesch Reading Ease Score: $metric_14")
+println("Flesch-Kincaid Grade Level: $metric_15")
+println("Gunning Fog: $metric_16")
+println("SMOG: $metric_17")
+println("Spache: $metric_18")

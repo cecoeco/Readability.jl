@@ -1,5 +1,5 @@
-import "../assets/css/header.css";
 import { createSignal, createEffect } from "solid-js";
+import "../assets/css/header.css";
 import Sun from "../assets/svg/sun.svg";
 import Moon from "../assets/svg/moon.svg";
 

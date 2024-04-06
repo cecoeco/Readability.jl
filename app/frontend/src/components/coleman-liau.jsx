@@ -1,16 +1,25 @@
 import { Show } from "solid-js/web";
-function ColemanLiau(props) {
-    const [showColemanLiauModal, setShowColemanLiauModal] = props.showColemanLiauModal;
+import X from "../assets/svg/x.svg";
 
-    function closeColemanLiauModal() {
-        setShowColemanLiauModal(false);
+function CL(props) {
+    const [showCLModal, setShowCLModal] = props.showCLModal;
+
+    function closeCLModal() {
+        setShowCLModal(false);
     }
 
     return (
-        <Show when={showColemanLiauModal()}>
-            <div class="modal-background" onClick={closeColemanLiauModal}></div>
+        <Show when={showCLModal()}>
+            <div class="modal-background" onClick={closeCLModal}>
+                <div class="modal">
+                    <X class="x" />
+                    <h1></h1>
+                    <p class="math"></p>
+                    <p class="apa-citation"></p>
+                </div>
+            </div>
         </Show>
     );
 }
 
-export default ColemanLiau;
+export default CL;

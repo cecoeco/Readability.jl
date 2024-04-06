@@ -11,7 +11,7 @@ textarea,
 .metrics-container {
     display: flex;
     width: 35%;
-    height: 90%;
+    height: 80%;
     padding: 20px;
     background-color: var(--accent-background-color);
     border: 1px solid var(--border-color);
@@ -62,7 +62,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .metrics {
-    width: 29vw;
+    width: 28vw;
 }
 
 .dropdown,

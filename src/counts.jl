@@ -57,15 +57,40 @@ function polysyllabic_words(text::String)
     return count
 end
 
-# Dale-Chall and Spache
-function difficult_words(text::String, word_list::Vector{String})
+# DaleChall and Spache
+function readwordlist(path::String)::Vector{String}
+    file::IOStream = Base.open(path, "r")
+    words::Vector{String} = Base.readlines(file)
+    Base.close(file)
+    return words
+end
+
+function difficult_words(text::String, word_list::String)
     lower_text::String = lowercase(text)
     words::Vector{String} = split(lower_text)
     count::Int = 0
-    for word in words
-        if !(word in word_list)
-            count += 1
+
+    dale_chall_txt::String = Base.joinpath(Base.dirname(Base.@__FILE__), "dale-chall_word_list.txt")
+    dale_chall_words::Vector{String} = readwordlist(dale_chall_txt)
+
+    spache_txt::String = Base.joinpath(Base.dirname(Base.@__FILE__), "spache_word_list.txt")
+    spache_words::Vector{String} = readwordlist(spache_txt)
+
+    if word_list == "dale-chall"
+        for word in words
+            if !(word in dale_chall_words)
+                count += 1
+            end
         end
+    elseif word_list == "spache"
+        for word in words
+            if !(word in spache_words)
+                count += 1
+            end
+        end
+    else 
+        error("word_list must be 'dale-chall' or 'spache'")
     end
+
     return count
 end

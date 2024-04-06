@@ -1,19 +1,25 @@
 import { Show } from "solid-js/web";
+import X from "../assets/svg/x.svg";
 
-function AverageReadingTime(props) {
-    const [showAverageReadingTimeModal, setShowAverageReadingTimeModal] = props.showAverageReadingTimeModal;
+function Reading(props) {
+    const [showReadingModal, setShowReadingModal] = props.showReadingModal;
 
-    function closeAverageReadingTimeModal() {
-        setShowAverageReadingTimeModal(false);
+    function closeReadingModal() {
+        setShowReadingModal(false);
     }
 
     return (
-        <Show when={showAverageReadingTimeModal()}>
-            <div class="modal-background" onClick={closeAverageReadingTimeModal}>
-                
+        <Show when={showReadingModal()}>
+            <div class="modal-background" onClick={closeReadingModal}>
+                <div class="modal">
+                    <X class="x" onClick={closeReadingModal} />
+                    <h1></h1>
+                    <p class="math"></p>
+                    <p class="apa-citation"></p>
+                </div>
             </div>
         </Show>
     )
 }
 
-export default AverageReadingTime;
+export default Reading;

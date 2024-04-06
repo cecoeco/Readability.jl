@@ -1,17 +1,25 @@
 import { Show } from "solid-js";
+import X from "../assets/svg/x.svg";
 
-function DaleChall(props) {
-    const [showDaleChallModal, setShowDaleChallModal] = props.showDaleChallModal;
+function DC(props) {
+    const [showDCModal, setShowDCModal] = props.showDCModal;
 
-    function closeDaleChallModal() {
-        setShowDaleChallModal(false);
+    function closeDCModal() {
+        setShowDCModal(false);
     }
 
     return (
-        <Show when={showDaleChallModal()}>
-            <div class="modal-background" onClick={closeDaleChallModal}></div>
+        <Show when={showDCModal()}>
+            <div class="modal-background" onClick={closeDCModal}>
+                <div class="modal">
+                    <X class="x" />
+                    <h1></h1>
+                    <p class="math"></p>
+                    <p class="apa-citation"></p>
+                </div>
+            </div>
         </Show>
     );
 }
 
-export default DaleChall;
+export default DC;
