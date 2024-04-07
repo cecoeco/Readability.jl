@@ -2,17 +2,17 @@ using Oxygen
 using HTTP
 using Readability
 
-const ALLOWED_ORIGINS::Vector{Pair{String, String}} = [
+const ALLOWED_ORIGINS::Vector{Pair{String,String}} = [
     "Access-Control-Allow-Origin" => "*"
 ]
 
 const CORS_HEADERS::Vector{Pair{String,String}} = [
     ALLOWED_ORIGINS...,
     "Access-Control-Allow-Headers" => "*",
-    "Access-Control-Allow-Methods" => "GET, POST, OPTIONS",
+    "Access-Control-Allow-Methods" => "GET, POST, OPTIONS"
 ]
 
-function CorsHandler(handle)
+function CORS_handler(handle::Function)
     return function (req::HTTP.Request)
         if HTTP.method(req) == "OPTIONS"
             return HTTP.Response(200, CORS_HEADERS)
@@ -24,74 +24,74 @@ function CorsHandler(handle)
     end
 end
 
-Oxygen.post("/ari") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.ARI(text)
+function post_request_handler(endpoint::String, readability_function::Function)
+    Oxygen.post(endpoint) do req::HTTP.Request
+        text::String = Base.String(req.body)
+        return readability_function(text)
+    end
 end
 
-Oxygen.post("/average_reading_time") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.reading_time(text)
+readability_endpoints::Vector{Tuple{String,Function}} = [
+    (
+        "/ari",
+        Readability.ARI
+    ),
+    (
+        "/average_reading_time",
+        Readability.reading_time
+    ),
+    (
+        "/average_speaking_time",
+        Readability.speaking_time
+    ),
+    (
+        "/characters",
+        Readability.characters
+    ),
+    (
+        "/coleman-liau",
+        Readability.ColemanLiau
+    ),
+    (
+        "/dale-chall",
+        Readability.DaleChall
+    ),
+    (
+        "/fkgl",
+        Readability.FleschKincaidGradeLevel
+    ),
+    (
+        "/fres",
+        Readability.FleschReadingEase
+    ),
+    (
+        "/gunning_fog",
+        Readability.GunningFog
+    ),
+    (
+        "/sentences",
+        Readability.sentences
+    ),
+    (
+        "/smog",
+        Readability.SMOG
+    ),
+    (
+        "/spache",
+        Readability.Spache
+    ),
+    (
+        "/syllables",
+        Readability.syllables
+    ),
+    (
+        "/words",
+        Readability.words
+    )
+]
+
+for (endpoint, readability_function) in readability_endpoints
+    post_request_handler(endpoint, readability_function)
 end
 
-Oxygen.post("/average_speaking_time") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.speaking_time(text)
-end
-
-Oxygen.post("/characters") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.characters(text)
-end
-
-Oxygen.post("/coleman-liau") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.ColemanLiau(text)
-end
-
-Oxygen.post("/dale-chall") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.DaleChall(text)
-end
-
-Oxygen.post("/fres") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.FleschReadingEase(text)
-end
-
-Oxygen.post("/fkgl") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.FleschKincaidGradeLevel(text)
-end
-
-Oxygen.post("/gunning_fog") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.GunningFog(text)
-end
-
-Oxygen.post("/sentences") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.sentences(text)
-end
-
-Oxygen.post("/smog") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.SMOG(text)
-end
-
-Oxygen.post("/spache") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.Spache(text)
-end
-
-Oxygen.post("/syllables") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.syllables(text)
-end
-
-Oxygen.post("/words") do req::HTTP.Request
-    text::String = Base.String(req.body)
-    return Readability.words(text)
-end
-
-Oxygen.serve(port=5050, middleware=[CorsHandler])
+Oxygen.serve(port=5050, middleware=[CORS_handler])

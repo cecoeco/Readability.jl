@@ -171,11 +171,11 @@ function Metrics() {
 
     async function postData(metricType, route) {
         const text = document.querySelector("textarea").value;
-        const endpoint = `http://127.0.0.1:5050/${route}`;
+        const endpoint = `https://127.0.0.1:5050/${route}`;
         try {
             const response = await fetch(endpoint, {
                 method: "POST",
-                headers: { "Content-Type": "text/plain", },
+                headers: { "Content-Type": "text/plain" },
                 body: text,
             });
 
