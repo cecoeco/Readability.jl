@@ -175,7 +175,7 @@ function Metrics() {
         try {
             const response = await fetch(endpoint, {
                 method: "POST",
-                headers: { "Content-Type": "text/plain" },
+                headers: { "Content-Type": "text/plain", },
                 body: text,
             });
 

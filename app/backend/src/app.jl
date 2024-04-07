@@ -9,7 +9,7 @@ const ALLOWED_ORIGINS::Vector{Pair{String, String}} = [
 const CORS_HEADERS::Vector{Pair{String,String}} = [
     ALLOWED_ORIGINS...,
     "Access-Control-Allow-Headers" => "*",
-    "Access-Control-Allow-Methods" => "GET, Oxygen.post"
+    "Access-Control-Allow-Methods" => "GET, POST, OPTIONS",
 ]
 
 function CorsHandler(handle)

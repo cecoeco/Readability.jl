@@ -12,10 +12,13 @@ function DC(props) {
         <Show when={showDCModal()}>
             <div class="modal-background" onClick={closeDCModal}>
                 <div class="modal">
-                    <X class="x" />
-                    <h1></h1>
+                    <X class="x" onClick={closeDCModal} />
+                    <h1>Dale-Chall</h1>
                     <p class="math"></p>
-                    <p class="apa-citation"></p>
+                    <p class="apa-citation">
+                        Dale, E., & Chall, J. S. (1948). A Formula for Predicting
+                        Readability. Educational Research Bulletin, 27(1), 11–28.
+                    </p>
                 </div>
             </div>
         </Show>

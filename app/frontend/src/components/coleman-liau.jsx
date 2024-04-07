@@ -12,10 +12,18 @@ function CL(props) {
         <Show when={showCLModal()}>
             <div class="modal-background" onClick={closeCLModal}>
                 <div class="modal">
-                    <X class="x" />
-                    <h1></h1>
-                    <p class="math"></p>
-                    <p class="apa-citation"></p>
+                    <X class="x" onClick={closeCLModal} />
+                    <h1>Coleman-Liau Index</h1>
+                    <p class="math">CLI = 0.0588 * L - 0.296 * S - 15.8</p>
+                    <p class="apa-citation">
+                        Coleman, M., & Liau, T. L. (1975). A computer readability formula
+                        designed for machine scoring. <i>Journal of Applied Psychology</i>, 60(2),
+                        283–284.
+                        <br />
+                        <a href="https://doi.org/10.1037/h0076540" target="_blank">
+                            https://doi.org/10.1037/h0076540
+                        </a>
+                    </p>
                 </div>
             </div>
         </Show>

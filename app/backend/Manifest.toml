@@ -183,6 +183,11 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 deps = ["SHA"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
+[[Readability]]
+git-tree-sha1 = "81302e9c43c20822c56540958722e97f5fd63c30"
+uuid = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
+version = "0.2.0"
+
 [[Reexport]]
 git-tree-sha1 = "45e428421666073eab6f2da5c9d310d99bb12f9b"
 uuid = "189a3867-3050-52da-a836-e630ba90ab69"
