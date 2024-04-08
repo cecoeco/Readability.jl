@@ -14,7 +14,9 @@ function GF(props) {
                 <div class="modal">
                     <X class="x" onClick={closeGFModal} />
                     <h1>Gunning Fog Index</h1>
-                    <p class="math"></p>
+                    <p class="math">
+                        GFI = 0.4 * words per sentence + percentage of complex words
+                    </p>
                     <p class="apa-citation">
                         Gunning, R. (1971). The Technique of Clear Writing. McGraw-Hill.
                     </p>

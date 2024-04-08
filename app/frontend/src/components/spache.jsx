@@ -14,7 +14,9 @@ function Spache(props) {
                 <div class="modal">
                     <X class="x" onClick={closeSpacheModal} />
                     <h1>Spache Index</h1>
-                    <p class="math"></p>
+                    <p class="math">
+                        SI = 0.121 * words per sentence + 0.082 * percentage of difficult words + 0.659
+                    </p>
                     <p class="apa-citation">
                         Spache, G. (1953). A New Readability Formula for Primary-Grade
                         Reading Materials. <i>The Elementary School Journal</i>, 53(7),

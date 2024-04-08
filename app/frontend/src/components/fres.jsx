@@ -15,7 +15,9 @@ function FRES(props) {
                 <div class="modal">
                     <X class="x" onClick={closeFRESModal} />
                     <h1>Fresch Reading Ease Score</h1>
-                    <p class="math"></p>
+                    <p class="math">
+                        FRES = 206.835 - 1.015 * words per sentence - 84.6 * syllables per word
+                    </p>
                     <p class="apa-citation">
                         Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951).
                         Simplification of Flesch Reading Ease Formula. <i>Journal of Applied

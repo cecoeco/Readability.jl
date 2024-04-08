@@ -14,7 +14,9 @@ function SMOG(props) {
                 <div class="modal">
                     <X class="x" onClick={closeSMOGModal} />
                     <h1>Simple Measure of Gobbledygook (SMOG)</h1>
-                    <p class="math"></p>
+                    <p class="math">
+                        SMOG Index = 1.0430 * sqrt(total_polysyllablic_words * (30 / total_sentences)) + 3.1291
+                    </p>
                     <p class="apa-citation">
                         Mc Laughlin, G. H. (1969). SMOG Grading-a New Readability Formula.{" "}
                         <i>Journal of Reading</i>, 12(8), 639–646.

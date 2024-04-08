@@ -15,7 +15,7 @@ function ARI(props) {
                     <X class="x" onClick={closeARIModal} />
                     <h1>Automated Readability Index</h1>
                     <p class="math">
-                        ARI = 4.71 * (characters per word) + 0.5 * (words per sentence) -
+                        ARI = 4.71 * characters per word + 0.5 * words per sentence -
                         21.43
                     </p>
                     <p class="apa-citation">

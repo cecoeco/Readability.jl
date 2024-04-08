@@ -13,8 +13,10 @@ function DC(props) {
             <div class="modal-background" onClick={closeDCModal}>
                 <div class="modal">
                     <X class="x" onClick={closeDCModal} />
-                    <h1>Dale-Chall</h1>
-                    <p class="math"></p>
+                    <h1>Dale-Chall Index</h1>
+                    <p class="math">
+                        DCI = 64 - 0.95 * percentage of difficult words - 0.69 * words per sentence
+                    </p>
                     <p class="apa-citation">
                         Dale, E., & Chall, J. S. (1948). A Formula for Predicting
                         Readability. <i>Educational Research Bulletin</i>, 27(1), 11–28.

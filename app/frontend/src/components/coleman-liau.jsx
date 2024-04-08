@@ -14,7 +14,7 @@ function CL(props) {
                 <div class="modal">
                     <X class="x" onClick={closeCLModal} />
                     <h1>Coleman-Liau Index</h1>
-                    <p class="math">CLI = 0.0588 * L - 0.296 * S - 15.8</p>
+                    <p class="math">CLI = 0.0588 * characters per 100 words - 0.296 * sentences per 100 words - 15.8</p>
                     <p class="apa-citation">
                         Coleman, M., & Liau, T. L. (1975). A computer readability formula
                         designed for machine scoring. <i>Journal of Applied Psychology</i>, 60(2),

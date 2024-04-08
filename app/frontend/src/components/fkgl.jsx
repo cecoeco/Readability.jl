@@ -14,7 +14,9 @@ function FKGL(props) {
                 <div class="modal">
                     <X class="x" onClick={closeFKGLModal} />
                     <h1>Flesch-Kincaid Grade Level</h1>
-                    <p class="math"></p>
+                    <p class="math">
+                        FKGL = 0.39 * words per sentence + 11.8 * syllables per word - 15.59
+                    </p>
                     <p class="apa-citation">
                         Kincaid, J. P., Fishburne, Jr., Robert P., R., Richard L., C., &
                         Brad S. (1975). Derivation of New Readability Formulas (Automated
