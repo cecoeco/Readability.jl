@@ -100,7 +100,8 @@ function Metrics() {
         };
     });
 
-    const [showARI, setShowARI] = createSignal(false);
+    const [showARI, setShowARI] =
+        createSignal(false);
     function openARIModal() {
         setShowARI(true);
     }
@@ -117,57 +118,65 @@ function Metrics() {
         setShowSpeaking(true);
     }
 
-    const [showCL, setShowCL] = createSignal(false);
+    const [showCL, setShowCL] =
+        createSignal(false);
     function openCLModal() {
         setShowCL(true);
     }
 
-    const [showDC, setShowDC] = createSignal(false);
+    const [showDC, setShowDC] =
+        createSignal(false);
     function openDCModal() {
         setShowDC(true);
     }
 
-    const [showFRES, setshowFRES] = createSignal(false);
+    const [showFRES, setshowFRES] =
+        createSignal(false);
     function openFRESModal() {
         setshowFRES(true);
     }
 
-    const [showFKGL, setshowFKGL] = createSignal(false);
+    const [showFKGL, setshowFKGL] =
+        createSignal(false);
     function openFKGLModal() {
         setshowFKGL(true);
     }
 
-    const [showGF, setShowGF] = createSignal(false);
+    const [showGF, setShowGF] =
+        createSignal(false);
     function openGFModal() {
         setShowGF(true);
     }
 
-    const [showSMOG, setShowSMOG] = createSignal(false);
+    const [showSMOG, setShowSMOG] =
+        createSignal(false);
     function openSMOGModal() {
         setShowSMOG(true);
     }
 
-    const [showSpache, setShowSpache] = createSignal(false);
+    const [showSpache, setShowSpache] =
+        createSignal(false);
     function openSpacheModal() {
         setShowSpache(true);
     }
 
-    const [metricResponses, setMetricResponses] = createSignal({
-        "Automatic Readability Index (ARI)": 0,
-        "Average Reading Time": 0,
-        "Average Speaking Time": 0,
-        Characters: 0,
-        "Coleman-Liau": 0,
-        "Dale-Chall": 0,
-        "Flesch Reading Ease Score": 0,
-        "Flesch-Kincaid Grade Level": 0,
-        "Gunning Fog": 0,
-        Sentences: 0,
-        "Simple Measure of Gobbledygook (SMOG)": 0,
-        Spache: 0,
-        Syllables: 0,
-        Words: 0,
-    });
+    const [metricResponses, setMetricResponses] =
+        createSignal({
+            "Automatic Readability Index (ARI)": 0,
+            "Average Reading Time": 0,
+            "Average Speaking Time": 0,
+            Characters: 0,
+            "Coleman-Liau": 0,
+            "Dale-Chall": 0,
+            "Flesch Reading Ease Score": 0,
+            "Flesch-Kincaid Grade Level": 0,
+            "Gunning Fog": 0,
+            Sentences: 0,
+            "Simple Measure of Gobbledygook (SMOG)": 0,
+            Spache: 0,
+            Syllables: 0,
+            Words: 0,
+        });
 
     async function postData(metricType, route) {
         const text = document.querySelector("textarea").value;
@@ -193,46 +202,52 @@ function Metrics() {
         }
     }
 
-    async function onTextChange() {
-        const metrics = [
-            "Automatic Readability Index (ARI)",
-            "Average Reading Time",
-            "Average Speaking Time",
-            "Characters",
-            "Coleman-Liau",
-            "Dale-Chall",
-            "Flesch Reading Ease Score",
-            "Flesch-Kincaid Grade Level",
-            "Gunning Fog",
-            "Sentences",
-            "Simple Measure of Gobbledygook (SMOG)",
-            "Spache",
-            "Syllables",
-            "Words",
-        ];
+    let debounceTimeout;
 
-        const routes = [
-            "ari",
-            "average_reading_time",
-            "average_speaking_time",
-            "characters",
-            "coleman-liau",
-            "dale-chall",
-            "fres",
-            "fkgl",
-            "gunning_fog",
-            "sentences",
-            "smog",
-            "spache",
-            "syllables",
-            "words",
-        ];
+    async function onTextInput() {
+        clearTimeout(debounceTimeout);
 
-        for (let i = 0; i < metrics.length; i++) {
-            const metric = metrics[i];
-            const route = routes[i];
-            await postData(metric, route);
-        }
+        debounceTimeout = setTimeout(async () => {
+            const metrics = [
+                "Automatic Readability Index (ARI)",
+                "Average Reading Time",
+                "Average Speaking Time",
+                "Characters",
+                "Coleman-Liau",
+                "Dale-Chall",
+                "Flesch Reading Ease Score",
+                "Flesch-Kincaid Grade Level",
+                "Gunning Fog",
+                "Sentences",
+                "Simple Measure of Gobbledygook (SMOG)",
+                "Spache",
+                "Syllables",
+                "Words",
+            ];
+
+            const routes = [
+                "ari",
+                "average_reading_time",
+                "average_speaking_time",
+                "characters",
+                "coleman-liau",
+                "dale-chall",
+                "fres",
+                "fkgl",
+                "gunning_fog",
+                "sentences",
+                "smog",
+                "spache",
+                "syllables",
+                "words",
+            ];
+
+            for (let i = 0; i < metrics.length; i++) {
+                const metric = metrics[i];
+                const route = routes[i];
+                await postData(metric, route);
+            }
+        }, 1500);
     }
 
     function downloadMetrics() {
@@ -271,7 +286,7 @@ function Metrics() {
                     title="Type here..."
                     name="Type here..."
                     placeholder="Type here..."
-                    onChange={onTextChange}
+                    onInput={onTextInput}
                 />
                 <div class="metrics-container">
                     <div class="dropdown">

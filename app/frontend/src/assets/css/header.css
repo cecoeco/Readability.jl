@@ -12,10 +12,10 @@ header {
     width: 95%;
     padding: 0 2.5%;
     min-height: 50px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--box-shadow);
 }
 
-header a {
+.header-link {
     display: flex;
     align-items: center;
     justify-content: center;

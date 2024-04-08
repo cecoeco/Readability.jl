@@ -1,13 +1,28 @@
+"""
+    characters(text::String)
+
+Returns the number of characters in `text`.
+"""
 function characters(text::String)
     count::Int = length(text)
     return count
 end
 
+"""
+    sentences(text::String)
+
+Returns the number of sentences in `text`.
+"""
 function sentences(text::String)
     count::Int = length(split(text, ['.', '!', '?']))
     return count
 end
 
+"""
+    syllables(text::String)
+
+Returns the number of syllables in `text`.
+"""
 function syllables(text::String)
     vowels::String = "aeiou"
     count::Int = 0
@@ -26,12 +41,22 @@ function syllables(text::String)
     return count
 end
 
+"""
+    words(text::String)
+
+Returns the number of words in `text`.
+"""
 function words(text::String)
     count::Int = length(split(text))
     return count
 end
 
 # Gunning Fog
+"""
+    complex_words(text::String)
+
+Returns the number of complex words (words with 3 or more syllables and not ending in "es", "ed", or "ing") in `text`.
+"""
 function complex_words(text::String)
     words::Vector{String} = split(text)
     count::Int = 0
@@ -45,6 +70,11 @@ function complex_words(text::String)
 end
 
 # SMOG
+"""
+    polysyllabic_words(text::String)
+
+Returns the number of words with 3 or more syllables in `text`.
+"""
 function polysyllabic_words(text::String)
     words::Vector{String} = split(text)
     count::Int = 0
@@ -65,6 +95,11 @@ function readwordlist(path::String)::Vector{String}
     return words
 end
 
+"""
+    difficult_words(text::String, word_list::String)
+
+Returns the number of words that are not in the specified `word_list` (either "dale-chall" or "spache") in `text`.
+"""
 function difficult_words(text::String, word_list::String)
     lower_text::String = lowercase(text)
     words::Vector{String} = split(lower_text)
@@ -88,7 +123,7 @@ function difficult_words(text::String, word_list::String)
                 count += 1
             end
         end
-    else 
+    else
         error("word_list must be 'dale-chall' or 'spache'")
     end
 

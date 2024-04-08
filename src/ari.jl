@@ -1,3 +1,8 @@
+"""
+    ARI(text::String)
+
+Returns the Automated Readability Index (ARI) of `text`.
+"""
 function ARI(text::String)
     total_characters::Int = characters(text)
     total_words::Int = words(text)

@@ -1,3 +1,8 @@
+"""
+    GunningFog(text::String)
+
+Returns the Gunning Fog index of `text`.
+"""
 function GunningFog(text::String)
     total_words::Int = words(text)
     total_sentences::Int = sentences(text)

@@ -1,3 +1,8 @@
+"""
+    SMOG(text::String)
+
+Returns the SMOG index of `text`.
+"""
 function SMOG(text::String)
     total_sentences::Int = sentences(text)
     total_polysyllablic_words::Int = polysyllabic_words(text)

@@ -17,7 +17,7 @@ function DC(props) {
                     <p class="math"></p>
                     <p class="apa-citation">
                         Dale, E., & Chall, J. S. (1948). A Formula for Predicting
-                        Readability. Educational Research Bulletin, 27(1), 11–28.
+                        Readability. <i>Educational Research Bulletin</i>, 27(1), 11–28.
                     </p>
                 </div>
             </div>

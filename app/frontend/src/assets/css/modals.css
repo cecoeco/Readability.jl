@@ -21,16 +21,16 @@
     height: 350px;
     padding: 20px;
     background-color: var(--background-color);
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
+    box-shadow: var(--box-shadow);
     z-index: 1000;
 }
 
 .x {
     position: absolute;
-    top: -7px;
-    right: -7px;
+    top: -6px;
+    right: -6px;
     height: 25px;
     width: 25px;
     cursor: pointer;

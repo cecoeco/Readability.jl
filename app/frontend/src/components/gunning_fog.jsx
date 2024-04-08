@@ -9,18 +9,18 @@ function GF(props) {
     }
 
     return (
-      <Show when={showGFModal()}>
-        <div class="modal-background" onClick={closeGFModal}>
-          <div class="modal">
-            <X class="x" onClick={closeGFModal} />
-            <h1>Gunning Fog Index</h1>
-            <p class="math"></p>
-            <p class="apa-citation">
-              Gunning, R. (1971). The Technique of Clear Writing. McGraw-Hill.
-            </p>
-          </div>
-        </div>
-      </Show>
+        <Show when={showGFModal()}>
+            <div class="modal-background" onClick={closeGFModal}>
+                <div class="modal">
+                    <X class="x" onClick={closeGFModal} />
+                    <h1>Gunning Fog Index</h1>
+                    <p class="math"></p>
+                    <p class="apa-citation">
+                        Gunning, R. (1971). The Technique of Clear Writing. McGraw-Hill.
+                    </p>
+                </div>
+            </div>
+        </Show>
     );
 }
 

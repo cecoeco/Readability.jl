@@ -1,3 +1,8 @@
+"""
+    ColemanLiau(text::String)
+
+Returns the Coleman-Liau index of `text`.
+"""
 function ColemanLiau(text::String)
     total_characters::Int = characters(text)
     total_words::Int = words(text)

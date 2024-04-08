@@ -28,8 +28,20 @@ function Header() {
 
     return (
         <header>
-            <a href="https://github.com/cecoeco/Readability.jl" target="_blank">Readability.jl</a>
-            <button class="theme-button" onClick={toggleTheme} title="Toggle theme">
+            <a
+                href="https://github.com/cecoeco/Readability.jl"
+                target="_blank"
+                title="Readability.jl on GitHub"
+                class="header-link"
+            >
+                Readability.jl
+            </a>
+            <button
+                class="theme-button"
+                onClick={toggleTheme}
+                title="Toggle theme"
+                role="switch"
+            >
                 {isLightTheme() ? <Sun /> : <Moon />}
             </button>
         </header>

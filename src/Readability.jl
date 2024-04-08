@@ -6,8 +6,7 @@ export characters, sentences, syllables,
 export ARI
 export ColemanLiau
 export DaleChall
-export FleschReadingEase
-export FleschKincaidGradeLevel
+export FleschKincaidGradeLevel, FleschReadingEaseScore
 export GunningFog
 export SMOG
 export Spache
@@ -16,7 +15,8 @@ include("ari.jl") # Automatic Readability Index
 include("coleman-liau.jl")
 include("counts.jl")
 include("dale-chall.jl")
-include("flesch-kincaid.jl")
+include("fkgl.jl") # Flesch-Kincaid Grade Level
+include("fres.jl") # Flesch Reading Ease Score
 include("gunning_fog.jl")
 include("smog.jl") # Simple Measure of Gobbledygook
 include("spache.jl")

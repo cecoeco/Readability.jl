@@ -1,3 +1,8 @@
+"""
+    DaleChall(text::String)
+
+Returns the Dale-Chall readability score of `text`.
+"""
 function DaleChall(text::String)
     total_words::Int = words(text)
     total_difficult_words::Int = difficult_words(text, "dale-chall")
@@ -9,4 +14,3 @@ function DaleChall(text::String)
     dale_chall_score::Float64 = 64 - 0.95 * percentage_of_difficult_words - 0.69 * words_per_sentence
     return dale_chall_score
 end
-

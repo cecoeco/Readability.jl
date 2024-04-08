@@ -1,3 +1,8 @@
+"""
+    Spache(text::String)
+
+Returns the Spache readability score of `text`.
+"""
 function Spache(text::String)
     total_words::Int = words(text)
     total_difficult_words::Int = difficult_words(text, "spache")
