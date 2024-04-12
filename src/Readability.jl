@@ -2,7 +2,8 @@ module Readability
 
 export reading_time, speaking_time
 export characters, sentences, syllables,
-       words, complex_words, polysyllabic_words, difficult_words
+       words, complex_words, polysyllabic_words, difficult_words,
+       lines, paragraphs
 export ARI
 export ColemanLiau
 export DaleChall

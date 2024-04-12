@@ -51,6 +51,26 @@ function words(text::String)
     return count
 end
 
+"""
+    lines(text::String)
+
+Returns the number of lines `text`.
+"""
+function lines(text::String)
+    count::Int = length(split(text, "\n"))
+    return count
+end
+
+"""
+    paragraphs(text::String)
+
+Returns the number of paragraphs in `text`.
+"""
+function paragraphs(text::String)
+    count::Int = length(split(text, "\n\n"))
+    return count
+end
+
 # Gunning Fog
 """
     complex_words(text::String)
