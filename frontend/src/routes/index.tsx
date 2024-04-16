@@ -190,7 +190,7 @@ function Metrics() {
    */
   async function postData(metricType: string, route: string): Promise<void> {
     const text: string = (document.querySelector("textarea") as HTMLTextAreaElement).value;
-    const endpoint: string = `/api/${route}`;
+    const endpoint: string = `/${route}`;
     try {
       const response: Response = await fetch(endpoint, {
         method: "POST",
@@ -214,6 +214,7 @@ function Metrics() {
 
   /* Type definitions */
   type MetricResponses = {
+    [key: string]: number;
     "Automatic Readability Index (ARI)": number,
     "Average Reading Time": number,
     "Average Speaking Time": number,
@@ -383,12 +384,12 @@ function Metrics() {
                 metric === "Syllables" ||
                 metric === "Words"
               ) ? (
-                <div title={metric} class="metric">
+                <div title={metric + ": " + metricResponses()[metric]} class="metric">
                   <h1>{metric}</h1>
                   <div class="metric-value">{metricResponses()[metric]}</div>
                 </div>
               ) : (
-                <div title={metric} class="metric">
+                <div title={metric + ": " + metricResponses()[metric]} class="metric">
                   <div class="metric-name">
                     <h1>{metric}</h1>
                     <button
@@ -442,6 +443,7 @@ function Metrics() {
             title="Download Metrics"
             type="button"
             onClick={downloadMetrics}
+            class="download-button"
           >
             Download Metrics
           </button>

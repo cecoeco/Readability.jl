@@ -26,6 +26,8 @@ textarea,
     border: 1px solid var(--border-color);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .metrics-container {
@@ -39,7 +41,6 @@ textarea {
     font-family: "Times New Roman", serif;
     color: var(--text-color);
     resize: none;
-    overflow: auto;
     transition: box-shadow 0.3s ease;
 }
 
@@ -81,8 +82,10 @@ textarea::-webkit-scrollbar-thumb:active {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100%;
-    width: 95%;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    height: 80%;
+    width: 100%;
 }
 
 .dropdown-button {
@@ -158,7 +161,7 @@ textarea::-webkit-scrollbar-thumb:active {
     align-items: center;
     justify-content: space-between;
     font-size: 1rem;
-    width: 100%;
+    width: 95%;
 }
 
 .metric-name {
@@ -189,4 +192,8 @@ textarea::-webkit-scrollbar-thumb:active {
     width: .95rem;
     height: .95rem;
     fill: var(--text-color);
+}
+
+.download-button {
+    width: 50%;
 }

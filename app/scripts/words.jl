@@ -1,3 +1,0 @@
-using Readability
-
-Readability.words()
