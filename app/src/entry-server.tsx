@@ -25,17 +25,15 @@ export default createHandler(() => (
         Flesch-Kincaid, 
         Gobblydegook, 
         grade level, 
-        Gunning Fog, 
-        HTTP.jl,
+        Gunning Fog,
         Julia, 
-        Julia package, 
-        Oxygen Framework, 
-        Oxygen.jl, 
+        Julia package,
         Readability.jl, 
         reading, 
         sentences, 
         SMOG, 
         Solid Framework, 
+        SolidStart,
         Solid.js, 
         speaking, 
         Spache, 
@@ -44,11 +42,11 @@ export default createHandler(() => (
         words" />
           <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
           <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1a1e" />
-          <link rel="icon" type="image/png" href="/images/books.png" />
+          <link rel="icon" type="image/png" href="../public/favicon.png" />
           {assets}
         </head>
 
-        <body id="root">
+        <body id="app">
           {children}
           {scripts}
         </body>
