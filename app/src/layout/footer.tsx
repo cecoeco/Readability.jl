@@ -1,4 +1,4 @@
-import "../../public/less/footer.less";
+import "../../public/scss/footer.scss";
 
 /**
  * Render the footer component.

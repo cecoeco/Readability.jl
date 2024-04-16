@@ -1,6 +1,6 @@
 import { Title } from "@solidjs/meta";
 import { HttpStatusCode } from "@solidjs/start";
-import "../../public/less/notfound.less";
+import "./[...404].scss";
 
 export default function NotFound() {
   return (

@@ -1,5 +1,5 @@
 import { createSignal, createEffect } from "solid-js";
-import "../../public/less/header.less";
+import "../../public/scss/header.scss";
 
 
 /**

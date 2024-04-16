@@ -1,6 +1,6 @@
 import { createSignal, createEffect } from "solid-js";
-import "../../public/less/metrics.less";
-import "../../public/less/modals.less";
+import "./index.scss";
+import "../components/modals.scss";
 import ARI from "../components/ari.jsx";
 import Reading from "../components/average_reading_time.jsx";
 import Speaking from "../components/average_speaking_time.jsx";
@@ -180,11 +180,18 @@ function Metrics() {
       Words: 0,
     });
 
-  async function postData(metricType, route) {
-    const text = document.querySelector("textarea").value;
-    const endpoint = `https://127.0.0.1:5050/${route}`;
+  /**
+   * Sends a POST request to the specified route with the provided text data.
+   * @param metricType The name of the metric to update in the metricResponses signal.
+   * @param route The API route to send the request to.
+   * @returns Promise<void>
+   * @throws Error if the network response is not ok.
+   */
+  async function postData(metricType: string, route: string): Promise<void> {
+    const text: string = (document.querySelector("textarea") as HTMLTextAreaElement).value;
+    const endpoint: string = `api/${route}`;
     try {
-      const response = await fetch(endpoint, {
+      const response: Response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         body: text,
@@ -194,17 +201,35 @@ function Metrics() {
         throw new Error("Network response was not ok");
       }
 
-      const responseData = await response.text();
-      setMetricResponses((prevResponses) => ({
+      const responseData: string = await response.text();
+      setMetricResponses((prevResponses: MetricResponses) => ({
         ...prevResponses,
         [metricType]: responseData,
       }));
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error:", error);
     }
   }
 
-  let debounceTimeout;
+  /* Type definitions */
+  type MetricResponses = {
+    "Automatic Readability Index (ARI)": number,
+    "Average Reading Time": number,
+    "Average Speaking Time": number,
+    Characters: number,
+    "Coleman-Liau": number,
+    "Dale-Chall": number,
+    "Flesch Reading Ease Score": number,
+    "Flesch-Kincaid Grade Level": number,
+    "Gunning Fog": number,
+    Sentences: number,
+    "Simple Measure of Gobbledygook (SMOG)": number,
+    Spache: number,
+    Syllables: number,
+    Words: number
+  };
+
+  let debounceTimeout: NodeJS.Timeout;
 
   async function onTextInput() {
     clearTimeout(debounceTimeout);
@@ -253,7 +278,7 @@ function Metrics() {
   }
 
   function downloadMetrics() {
-    const data = metricResponses();
+    const data: { [key: string]: number } = metricResponses();
     const csvContent =
       "data:text/csv;charset=utf-8," +
       "metric,value\n" +

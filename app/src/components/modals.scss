@@ -36,12 +36,12 @@
     cursor: pointer;
     fill: var(--text-color);
     transition: fill 0.3s ease;
-}
 
-.x:hover {
-    fill: var(--error-color);
-}
+    &:hover {
+        fill: var(--error-color);
+    }
 
-.x:active {
-    fill: var(--text-color);
+    &:active {
+        fill: var(--text-color);
+    }
 }
