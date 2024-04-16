@@ -42,7 +42,7 @@ export default createHandler(() => (
         words" />
           <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
           <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1a1e" />
-          <link rel="icon" type="image/png" href="../public/favicon.png" />
+          <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
           {assets}
         </head>
 

@@ -8,7 +8,7 @@ Julia package that analyzes the difficulty of texts using different indexes like
 - count number of sentences in string 
 - count number of characters in string
 - count number of complex words in string
-- count number of polysyllbic words in string
+- count number of polysyllabic words in string
 - determine average reading time
 - determine average speaking time
 - determine difficulty and reading grade level of text

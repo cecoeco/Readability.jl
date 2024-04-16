@@ -1,6 +1,7 @@
 import { createSignal, createEffect } from "solid-js";
-import "./index.scss";
-import "../components/modals.scss";
+
+import "../assets/scss/index.scss";
+import "../assets/scss/modals.scss";
 import ARI from "../components/ari.jsx";
 import Reading from "../components/average_reading_time.jsx";
 import Speaking from "../components/average_speaking_time.jsx";
@@ -189,7 +190,7 @@ function Metrics() {
    */
   async function postData(metricType: string, route: string): Promise<void> {
     const text: string = (document.querySelector("textarea") as HTMLTextAreaElement).value;
-    const endpoint: string = `api/${route}`;
+    const endpoint: string = `/api/${route}`;
     try {
       const response: Response = await fetch(endpoint, {
         method: "POST",

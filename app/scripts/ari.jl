@@ -1,3 +1,3 @@
 using Readability
 
-Readability.ARI()
+Readability.ARI(text)

@@ -114,14 +114,14 @@ button {
             var(--button-background-color-1) 0%,
             var(--button-background-color-2) 100%);
     cursor: pointer;
-}
 
-button:hover {
-    background: linear-gradient(0deg,
-            var(--button-background-color-2) 0%,
-            var(--button-background-color-1) 100%);
-}
+    &:hover {
+        background: linear-gradient(0deg,
+                var(--button-background-color-2) 0%,
+                var(--button-background-color-1) 100%);
+    }
 
-button:active {
-    background: var(--button-background-color-2);
+    &:active {
+        background: var(--button-background-color-2);
+    }
 }
