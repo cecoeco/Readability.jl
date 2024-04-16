@@ -1,7 +1,8 @@
 import { createSignal, createEffect } from "solid-js";
-import "../assets/css/header.css";
+import "../assets/less/header.less";
 import Sun from "../assets/svg/sun.svg";
 import Moon from "../assets/svg/moon.svg";
+
 
 /**
  * Renders the header component with a toggle theme button.
