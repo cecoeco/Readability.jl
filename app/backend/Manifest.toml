@@ -40,9 +40,9 @@ version = "2.4.1"
 
 [[DataStructures]]
 deps = ["Compat", "InteractiveUtils", "OrderedCollections"]
-git-tree-sha1 = "97d79461925cdb635ee32116978fc735b9463a39"
+git-tree-sha1 = "0f4b5d62a88d8f59003e43c25a8a90de9eb76317"
 uuid = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
-version = "0.18.19"
+version = "0.18.18"
 
 [[Dates]]
 deps = ["Printf"]
@@ -153,9 +153,9 @@ version = "1.6.3"
 
 [[Oxygen]]
 deps = ["DataStructures", "Dates", "HTTP", "JSON3", "MIMEs", "Reexport", "RelocatableFolders", "Requires", "Sockets", "Statistics"]
-git-tree-sha1 = "d58b409bf44de000aeff1ea1a4ed867ac257c9aa"
+git-tree-sha1 = "38c6d004e71d9127001287ea12ef0de0f24e0173"
 uuid = "df9a0d86-3283-4920-82dc-4555fc0d1d8b"
-version = "1.5.5"
+version = "1.5.4"
 
 [[Parsers]]
 deps = ["Dates", "PrecompileTools", "UUIDs"]
@@ -184,9 +184,9 @@ deps = ["SHA"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[Readability]]
-git-tree-sha1 = "a232d32035f297494d2c69b35c3fe0a69251d26e"
+git-tree-sha1 = "81302e9c43c20822c56540958722e97f5fd63c30"
 uuid = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
-version = "0.2.2"
+version = "0.2.0"
 
 [[Reexport]]
 git-tree-sha1 = "45e428421666073eab6f2da5c9d310d99bb12f9b"
