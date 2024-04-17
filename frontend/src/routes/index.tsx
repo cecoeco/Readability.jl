@@ -190,7 +190,7 @@ function Metrics() {
    */
   async function postData(metricType: string, route: string): Promise<void> {
     const text: string = (document.querySelector("textarea") as HTMLTextAreaElement).value;
-    const endpoint: string = `/${route}`;
+    const endpoint: string = `http://127.0.0.1:5050/${route}`;
     try {
       const response: Response = await fetch(endpoint, {
         method: "POST",
