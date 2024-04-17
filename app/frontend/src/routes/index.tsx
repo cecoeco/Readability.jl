@@ -2,6 +2,7 @@ import { createSignal, createEffect } from "solid-js";
 
 import "../assets/scss/index.scss";
 import "../assets/scss/modals.scss";
+
 import ARI from "../components/ari.jsx";
 import Reading from "../components/average_reading_time.jsx";
 import Speaking from "../components/average_speaking_time.jsx";
@@ -163,23 +164,22 @@ function Metrics() {
     setShowSpache(true);
   }
 
-  const [metricResponses, setMetricResponses] =
-    createSignal({
-      "Automatic Readability Index (ARI)": 0,
-      "Average Reading Time": 0,
-      "Average Speaking Time": 0,
-      Characters: 0,
-      "Coleman-Liau": 0,
-      "Dale-Chall": 0,
-      "Flesch Reading Ease Score": 0,
-      "Flesch-Kincaid Grade Level": 0,
-      "Gunning Fog": 0,
-      Sentences: 0,
-      "Simple Measure of Gobbledygook (SMOG)": 0,
-      Spache: 0,
-      Syllables: 0,
-      Words: 0,
-    });
+  const [metricResponses, setMetricResponses] = createSignal<Record<string, number>>({
+    "Automatic Readability Index (ARI)": 0,
+    "Average Reading Time": 0,
+    "Average Speaking Time": 0,
+    "Characters": 0,
+    "Coleman-Liau": 0,
+    "Dale-Chall": 0,
+    "Flesch Reading Ease Score": 0,
+    "Flesch-Kincaid Grade Level": 0,
+    "Gunning Fog": 0,
+    "Sentences": 0,
+    "Simple Measure of Gobbledygook (SMOG)": 0,
+    "Spache": 0,
+    "Syllables": 0,
+    "Words": 0,
+  });
 
   /**
    * Sends a POST request to the specified route with the provided text data.
@@ -202,8 +202,8 @@ function Metrics() {
         throw new Error("Network response was not ok");
       }
 
-      const responseData: string = await response.text();
-      setMetricResponses((prevResponses: MetricResponses) => ({
+      const responseData: number = parseFloat(await response.text());
+      setMetricResponses((prevResponses) => ({
         ...prevResponses,
         [metricType]: responseData,
       }));
@@ -211,25 +211,6 @@ function Metrics() {
       console.error("Error:", error);
     }
   }
-
-  /* Type definitions */
-  type MetricResponses = {
-    [key: string]: number;
-    "Automatic Readability Index (ARI)": number,
-    "Average Reading Time": number,
-    "Average Speaking Time": number,
-    Characters: number,
-    "Coleman-Liau": number,
-    "Dale-Chall": number,
-    "Flesch Reading Ease Score": number,
-    "Flesch-Kincaid Grade Level": number,
-    "Gunning Fog": number,
-    Sentences: number,
-    "Simple Measure of Gobbledygook (SMOG)": number,
-    Spache: number,
-    Syllables: number,
-    Words: number
-  };
 
   let debounceTimeout: NodeJS.Timeout;
 
