@@ -1,4 +1,4 @@
-import "../assets/scss/footer.scss";
+import "../assets/css/footer.css";
 
 /**
  * Render the footer component.

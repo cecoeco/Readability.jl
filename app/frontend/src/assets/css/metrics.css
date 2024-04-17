@@ -1,7 +1,7 @@
 .metrics-page {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -84,16 +84,16 @@ textarea::-webkit-scrollbar-thumb:active {
     border: 1px solid var(--border-color);
     transition: box-shadow 0.3s ease;
     box-shadow: none;
+}
 
-    &:hover {
-        background: var(--accent-background-color);
-    }
+.dropdown-button:hover {
+    background: var(--accent-background-color);
+}
 
-    &:focus {
-        background: var(--accent-background-color);
-        border: 1px solid var(--border-color-focused);
-        box-shadow: 0 0 2px 3px var(--box-shadow-focused);
-    }
+.dropdown-button:focus {
+    background: var(--accent-background-color);
+    border: 1px solid var(--border-color-focused);
+    box-shadow: 0 0 2px 3px var(--box-shadow-focused);
 }
 
 .dropdown-button-label {
@@ -178,14 +178,14 @@ textarea::-webkit-scrollbar-thumb:active {
     border-radius: 50%;
     box-shadow: none;
     padding: 4px;
+}
 
-    &:hover {
-        background: var(--hover-color);
-    }
+.info-button:hover {
+    background: var(--hover-color);
+}
 
-    &:active {
-        background: none;
-    }
+.info-button:active {
+    background: none;
 }
 
 .info-icon {

@@ -12,10 +12,10 @@ header {
     width: 95%;
     padding: 0 2.5%;
     min-height: 50px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--shadow);
 }
 
-.header-link {
+header a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,14 +35,14 @@ header {
     border-radius: 50%;
     padding: 6px;
     box-shadow: none;
+}
 
-    &:hover {
-        background: var(--hover-color);
-    }
+.theme-button:hover {
+    background: var(--hover-color);
+}
 
-    &:active {
-        background: none;
-    }
+.theme-button:active {
+    background: none;
 }
 
 .theme-button-icon {
