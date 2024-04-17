@@ -171,7 +171,7 @@ function Metrics() {
 
     async function postData(metricType, route) {
         const text = document.querySelector("textarea").value;
-        const endpoint = `http://readability-jl-api.onrender.com/${route}`;
+        const endpoint = `https://readability-jl-api.onrender.com/${route}`;
         try {
             const response = await fetch(endpoint, {
                 method: "POST",
