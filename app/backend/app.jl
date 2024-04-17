@@ -1,6 +1,4 @@
-using Oxygen
-using HTTP
-using Readability
+using Oxygen, HTTP, Readability
 
 const ALLOWED_ORIGINS::Vector{Pair{String,String}} = [
     "Access-Control-Allow-Origin" => "*"
@@ -94,4 +92,4 @@ for (endpoint, readability_function) in readability_endpoints
     post_request_handler(endpoint, readability_function)
 end
 
-Oxygen.serve(port=5050, middleware=[CORS_handler])
+Oxygen.serve(host="0.0.0.0", middleware=[CORS_handler])
