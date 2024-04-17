@@ -1,4 +1,5 @@
 FROM julia:1.10
+WORKDIR /app/backend/
 COPY app/backend/Project.toml ./
 COPY app/backend/Manifest.toml ./
 RUN julia --project -e 'using Pkg; Pkg.instantiate()'
