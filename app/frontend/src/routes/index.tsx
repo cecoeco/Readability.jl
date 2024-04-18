@@ -71,12 +71,6 @@ function Metrics() {
     setSelectedMetrics(allMetrics);
   };
 
-  /**
-   * Closes the dropdown if the click event target does not have a parent
-   * element with the class "dropdown".
-   *
-   * @param {MouseEvent} event - The click event.
-   */
   const closeDropdownOnOutsideClick = (event: MouseEvent) => {
     if (!(event.target as Element).closest(".dropdown")) {
       setIsDropdownOpen(false);
@@ -181,13 +175,6 @@ function Metrics() {
     "Words": 0,
   });
 
-  /**
-   * Sends a POST request to the specified route with the provided text data.
-   * @param metricType The name of the metric to update in the metricResponses signal.
-   * @param route The API route to send the request to.
-   * @returns Promise<void>
-   * @throws Error if the network response is not ok.
-   */
   async function postData(metricType: string, route: string): Promise<void> {
     const text: string = (document.querySelector("textarea") as HTMLTextAreaElement).value;
     const endpoint: string = `https://readability-jl-api.onrender.com/${route}`;
@@ -261,13 +248,17 @@ function Metrics() {
   }
 
   function downloadMetrics() {
-    const data: { [key: string]: number } = metricResponses();
+    const data = metricResponses();
     const csvContent =
       "data:text/csv;charset=utf-8," +
       "metric,value\n" +
       Object.keys(data)
         .map((key) => {
-          return `${key},${data[key]}`;
+          let formattedValue: string | number = data[key];
+          if (key === "Average Reading Time" || key === "Average Speaking Time") {
+            formattedValue = `${formattedValue} seconds`;
+          }
+          return `${key},${formattedValue}`;
         })
         .join("\n");
     const encodedUri = encodeURI(csvContent);

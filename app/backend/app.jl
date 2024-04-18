@@ -50,4 +50,10 @@ for (endpoint, readability_function) in readability_endpoints
     post_request_handler(endpoint, readability_function)
 end
 
-Oxygen.serve(host="0.0.0.0", port=5050, middleware=[CorsHandler])
+Oxygen.serve(
+    host="0.0.0.0", 
+    port=5050, 
+    middleware=[CorsHandler], 
+    docs=false, 
+    metrics=false
+)
