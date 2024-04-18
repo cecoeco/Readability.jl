@@ -1,7 +1,7 @@
 name = "Readability"
 uuid = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
 authors = ["Ceco E. Maples <mapleselijah9@gmail.com>"]
-version = "0.3.2"
+version = "0.2.3"
 
 [compat]
 julia = "1"
