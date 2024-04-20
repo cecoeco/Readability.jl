@@ -3,9 +3,17 @@
 
 Returns the number of characters in `text`.
 """
-function characters(text::String)
-    count::Int = length(text)
-    return count
+function characters(text::String)::Int
+    return Base.length(text)
+end
+
+"""
+    characters_per_word(text::String)
+
+Returns the number of characters per word or the average word length in `text`.
+"""
+function characters_per_word(text::String)::Float64
+    return characters(text) / words(text)
 end
 
 """
@@ -13,9 +21,17 @@ end
 
 Returns the number of sentences in `text`.
 """
-function sentences(text::String)
-    count::Int = length(split(text, ['.', '!', '?']))
-    return count
+function sentences(text::String)::Int
+    return Base.length(Base.split(text, ['.', '!', '?']))
+end
+
+"""
+    sentences_per_paragraph(text::String)
+
+Returns the number of sentences per paragraph or the average paragraph length in `text`.
+"""
+function sentences_per_paragraph(text::String)::Float64
+    return sentences(text) / paragraphs(text)
 end
 
 """
@@ -23,11 +39,11 @@ end
 
 Returns the number of syllables in `text`.
 """
-function syllables(text::String)
+function syllables(text::String)::Int
     vowels::String = "aeiou"
     count::Int = 0
     in_vowel_sequence::Bool = false
-    text::String = lowercase(text)
+    text::String = Base.lowercase(text)
     for char in text
         if char in vowels
             if !in_vowel_sequence
@@ -42,13 +58,30 @@ function syllables(text::String)
 end
 
 """
+    syllables_per_word(text::String)
+
+Returns the number of syllables per word or the average word length in `text`.
+"""
+function syllables_per_word(text::String)::Float64
+    return syllables(text) / words(text)
+end
+
+"""
     words(text::String)
 
 Returns the number of words in `text`.
 """
-function words(text::String)
-    count::Int = length(split(text))
-    return count
+function words(text::String)::Int
+    return Base.length(Base.split(text))
+end
+
+"""
+    words_per_sentence(text::String)
+
+Returns the number of words per sentence or the sentence length in `text`.
+"""
+function words_per_sentence(text::String)::Float64
+    return words(text) / sentences(text)
 end
 
 """
@@ -56,9 +89,8 @@ end
 
 Returns the number of lines `text`.
 """
-function lines(text::String)
-    count::Int = length(split(text, "\n"))
-    return count
+function lines(text::String)::Int
+    return Base.length(Base.split(text, "\n"))
 end
 
 """
@@ -66,9 +98,8 @@ end
 
 Returns the number of paragraphs in `text`.
 """
-function paragraphs(text::String)
-    count::Int = length(split(text, "\n\n"))
-    return count
+function paragraphs(text::String)::Int
+    return Base.length(Base.split(text, "\n\n"))
 end
 
 # Gunning Fog
@@ -77,12 +108,12 @@ end
 
 Returns the number of complex words (words with 3 or more syllables and not ending in "es", "ed", or "ing") in `text`.
 """
-function complex_words(text::String)
-    words::Vector{String} = split(text)
+function complex_words(text::String)::Int
+    words::Vector{String} = Base.split(text)
     count::Int = 0
     for word in words
         syllable_count::Int = syllables(word)
-        if syllable_count >= 3 && !any(x -> occursin(x, word), ['-', "es", "ed", "ing"])
+        if syllable_count >= 3 && !Base.any(x -> Base.occursin(x, word), ['-', "es", "ed", "ing"])
             count += 1
         end
     end
@@ -95,8 +126,8 @@ end
 
 Returns the number of words with 3 or more syllables in `text`.
 """
-function polysyllabic_words(text::String)
-    words::Vector{String} = split(text)
+function polysyllabic_words(text::String)::Int
+    words::Vector{String} = Base.split(text)
     count::Int = 0
     for word in words
         syllable_count = syllables(word)
@@ -121,8 +152,8 @@ end
 Returns the number of words that are not in the specified `word_list` (either "dale-chall" or "spache") in `text`.
 """
 function difficult_words(text::String, word_list::String)
-    lower_text::String = lowercase(text)
-    words::Vector{String} = split(lower_text)
+    lower_text::String = Base.lowercase(text)
+    words::Vector{String} = Base.split(lower_text)
     count::Int = 0
 
     dale_chall_txt::String = Base.joinpath(Base.dirname(Base.@__FILE__), "dale-chall_word_list.txt")
@@ -144,7 +175,7 @@ function difficult_words(text::String, word_list::String)
             end
         end
     else
-        error("word_list must be 'dale-chall' or 'spache'")
+        Base.error("word_list must be 'dale-chall' or 'spache'")
     end
 
     return count
