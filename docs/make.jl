@@ -1,21 +1,12 @@
-using Documenter
-using DocumenterCitations
-using Readability
+using Documenter, DocumenterCitations, Readability
 
 bib_filepath = Base.joinpath(Base.dirname(@__FILE__), "src/assets/references.bib")
 bib = DocumenterCitations.CitationBibliography(bib_filepath, style=:authoryear)
 
 Documenter.makedocs(
     modules=[Readability],
-    format=Documenter.HTML(
-        assets=[
-            "src/assets/bib.css"
-        ]
-    ),
-    pages=[
-        "Home" => "index.md",
-        "References" => "references.md"
-    ],
+    format=Documenter.HTML(assets=["src/assets/bib.css"]),
+    pages=["Home" => "index.md","References" => "references.md"],
     repo="https://github.com/cecoeco/Readability.jl",
     sitename="Readability.jl",
     authors="Ceco Elijah Maples",

@@ -1,9 +1,9 @@
 """
-    ColemanLiau(text::String)
+    coleman_liau(text::String)
 
 Returns the Coleman-Liau index of `text`.
 """
-function ColemanLiau(text::String)
+function coleman_liau(text::String)
     characters_per_100_words::Float64 = characters(text) / words(text) * 100
     sentences_per_100_words::Float64 = sentences(text) / words(text) * 100
 

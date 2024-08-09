@@ -6,16 +6,15 @@ export syllables, syllables_per_word
 export words, words_per_sentence
 export sentences, sentences_per_paragraph
 export lines, paragraphs
-export ARI
-export ColemanLiau
-export DaleChall, Spache, difficult_words
-export FleschKincaidGradeLevel, FleschReadingEase
-export GunningFog, complex_words
-export SMOG, polysyllabic_words
+export ari
+export coleman_liau
+export dale_chall, spache, difficult_words
+export flesch_kincaid_grade_level, flesch_reading_ease
+export gunning_fog, complex_words
+export smog, polysyllabic_words
 
 include("counts.jl")
 include("time.jl")
-
 include("ari.jl") # Automatic Readability Index
 include("coleman-liau.jl")
 include("dale-chall.jl")
