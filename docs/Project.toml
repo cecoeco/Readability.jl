@@ -4,5 +4,5 @@ Readability = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
 
 [compat]
 Documenter = "1"
-Readability = "0.3"
+Readability = "0.4"
 julia = "1"
