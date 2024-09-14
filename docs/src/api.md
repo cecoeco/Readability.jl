@@ -1,0 +1,27 @@
+# API
+
+```@docs
+Readability.ari
+Readability.characters
+Readability.characters_per_word
+Readability.coleman_liau
+Readability.complex_words
+Readability.dale_chall
+Readability.difficult_words
+Readability.flesch_kincaid_grade_level
+Readability.flesch_reading_ease_score
+Readability.gunning_fog
+Readability.lines
+Readability.paragraphs
+Readability.polysyllabic_words
+Readability.reading_time
+Readability.sentences
+Readability.sentences_per_paragraph
+Readability.smog
+Readability.spache
+Readability.speaking_time
+Readability.syllables
+Readability.syllables_per_word
+Readability.words
+Readability.words_per_sentence
+```

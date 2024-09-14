@@ -1,39 +1,20 @@
-# Readability
+<div>
+<a href="https://github.com/cecoeco/Readability.jl/actions/workflows/CI.yml"><img alt="CI test" src="https://github.com/cecoeco/Readability.jl/actions/workflows/CI.yml/badge.svg"></a>
+<a href="https://cecoeco.github.io/Readability.jl/stable/"><img src="https://img.shields.io/badge/docs-stable-blue.svg" alt="Documentation Stable" /></a> 
+<a href="https://cecoeco.github.io/Readability.jl/dev/"><img src="https://img.shields.io/badge/docs-dev-blue.svg" alt="Documentation Dev"></a>
+<a href="https://juliapkgstats.com/pkg/Readability"><img src="https://img.shields.io/badge/dynamic/json?url=http%3A%2F%2Fjuliapkgstats.com%2Fapi%2Fv1%2Fmonthly_downloads%2FReadability&query=total_requests&suffix=%2Fmonth&label=Downloads" alt="Package Statistics"></a>
+<a href="https://github.com/JuliaDiff/BlueStyle"><img alt="Style: Blue" src="https://img.shields.io/badge/code%20style-blue-4495d1.svg"></a>
+
+</div>
+
+# Readability.jl
 
 Julia package that analyzes the difficulty of texts using different indexes like Gunning-Fog, SMOG, and Flesch-Kincaid.
 
-## Features
-- count number of words in string
-- count number of syllables in string
-- count number of sentences in string 
-- count number of characters in string
-- count number of complex words in string
-- count number of polysyllabic words in string
-- determine average reading time
-- determine average speaking time
-- determine difficulty and reading grade level of text
-- web-based interface that requires zero knowledge of Julia or programming.
+## Installation
+
+use this command in the Julia REPL:
 
 ```julia
-using Pkg
-Pkg.add("Readability")
-
-using Readability, HTTP
-
-url = "https://en.wikipedia.org/wiki/Enzyme"
-
-response = HTTP.get(url)
-txt = String(response.body)
-
-metric_01 = Readability.reading_time(txt, wpm=250)
-metric_02 = Readability.speaking_time(txt, wpm=200)
-metric_03 = Readability.characters(txt)
-metric_04 = Readability.sentences(txt)
-metric_05 = Readability.syllables(txt)
-metric_06 = Readability.words(txt)
-metric_07 = Readability.complex_words(txt)
-metric_08 = Readability.polysyllabic_words(txt)
-metric_09 = Readability.difficult_words(txt, "dale-chall")
-metric_10 = Readability.difficult_words(txt, "spache")
-metric_11 = Readability.ari(txt)
+using Pkg; Pkg.add("TextCoder")
 ```

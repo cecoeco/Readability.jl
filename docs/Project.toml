@@ -1,8 +1,10 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+DocumenterCitations = "daee34ce-89f3-4625-b898-19384cb65244"
 Readability = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
 
 [compat]
 Documenter = "1"
-Readability = "0.4"
+DocumenterCitations = "1"
+Readability = "0.5"
 julia = "1"
