@@ -84,7 +84,6 @@ const onTextInput = (
   }
 };
 
-
 const App = () => {
   const [metrics, setMetrics] = useState({
     ari: 0,
@@ -115,6 +114,7 @@ const App = () => {
       <main className="main">
         <div className="textarea-container">
           <textarea
+            id="readability-textarea"
             className="textarea"
             placeholder="Paste your text here..."
             spellCheck="false"

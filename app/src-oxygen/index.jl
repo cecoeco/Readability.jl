@@ -49,7 +49,7 @@ function serve_reactjs(; build_directory::String)::Nothing
             <div id="root"></div>
         </body>
         </html>
-        """
+        """,
     )
 
     for path in Base.Filesystem.readdir(build_directory; join=true)
@@ -72,12 +72,7 @@ function start_app()::Nothing
     build_reactjs(; build_directory=BUILD_DIRECTORY)
     serve_reactjs(; build_directory=BUILD_DIRECTORY)
 
-    Oxygen.serve(
-        host="0.0.0.0",
-        port=5050,
-        docs=false,
-        metrics=false
-    )
+    Oxygen.serve(; host="0.0.0.0", port=5050)
 
     return nothing
 end
@@ -89,86 +84,26 @@ function post_request_handler(endpoint::String, readability_function::Function)
 end
 
 readability_endpoints::Vector{Tuple{String,Function}} = [
-    (
-        "/api/ari",
-        Readability.ari
-    ),
-    (
-        "/api/characters",
-        Readability.characters
-    ),
-    (
-        "/api/characters-per-word",
-        Readability.characters_per_word
-    ),
-    (
-        "/api/coleman-liau",
-        Readability.coleman_liau
-    ),
-    (
-        "/api/dale-chall",
-        Readability.dale_chall
-    ),
-    (
-        "/api/flesch-kincaid-grade-level",
-        Readability.flesch_kincaid_grade_level
-    ),
-    (
-        "/api/flesch-reading-ease-score",
-        Readability.flesch_reading_ease
-    ),
-    (
-        "/api/gunning-fog",
-        Readability.gunning_fog
-    ),
-    (
-        "/api/lines",
-        Readability.lines
-    ),
-    (
-        "/api/paragraphs",
-        Readability.paragraphs
-    ),
-    (
-        "/api/reading-time",
-        Readability.reading_time
-    ),
-    (
-        "/api/sentences",
-        Readability.sentences
-    ),
-    (
-        "/api/sentences-per-paragraph",
-        Readability.sentences_per_paragraph
-    ),
-    (
-        "/api/smog",
-        Readability.smog
-    ),
-    (
-        "/api/spache",
-        Readability.spache
-    ),
-    (
-        "/api/speaking-time",
-        Readability.speaking_time
-    ),
-    (
-        "/api/syllables",
-        Readability.syllables
-    ),
-    (
-        "/api/syllables-per-word",
-        Readability.syllables_per_word
-    ),
-    (
-        "/api/words",
-        Readability.words
-    ),
-    (
-        "/api/words-per-sentence",
-        Readability.words_per_sentence
-    )
+    ("/api/ari", Readability.ari),
+    ("/api/characters", Readability.characters),
+    ("/api/characters-per-word", Readability.characters_per_word),
+    ("/api/coleman-liau", Readability.coleman_liau),
+    ("/api/dale-chall", Readability.dale_chall),
+    ("/api/flesch-kincaid-grade-level", Readability.flesch_kincaid_grade_level),
+    ("/api/flesch-reading-ease-score", Readability.flesch_reading_ease),
+    ("/api/gunning-fog", Readability.gunning_fog),
+    ("/api/lines", Readability.lines),
+    ("/api/paragraphs", Readability.paragraphs),
+    ("/api/reading-time", Readability.reading_time),
+    ("/api/sentences", Readability.sentences),
+    ("/api/sentences-per-paragraph", Readability.sentences_per_paragraph),
+    ("/api/smog", Readability.smog),
+    ("/api/spache", Readability.spache),
+    ("/api/speaking-time", Readability.speaking_time),
+    ("/api/syllables", Readability.syllables),
+    ("/api/syllables-per-word", Readability.syllables_per_word),
+    ("/api/words", Readability.words),
+    ("/api/words-per-sentence", Readability.words_per_sentence),
 ]
 
 for (endpoint, readability_function) in readability_endpoints

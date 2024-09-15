@@ -10,7 +10,7 @@ const TEXTS = [
     "This one is a bit tricky; let's see how the metrics work.",
     "Will it work with... ellipses? Or maybe, parentheses (like these)?",
     "Hypothetical paragraph designed to test reading times and word complexities.",
-    "Final sample text to verify sentence and paragraph counts. Good luck!"
+    "Final sample text to verify sentence and paragraph counts. Good luck!",
 ]
 
 @testset "Readability.ari" begin
