@@ -90,7 +90,7 @@ readability_endpoints::Vector{Tuple{String,Function}} = [
     ("/api/coleman-liau", Readability.coleman_liau),
     ("/api/dale-chall", Readability.dale_chall),
     ("/api/flesch-kincaid-grade-level", Readability.flesch_kincaid_grade_level),
-    ("/api/flesch-reading-ease-score", Readability.flesch_reading_ease),
+    ("/api/flesch-reading-ease-score", Readability.flesch_reading_ease_score),
     ("/api/gunning-fog", Readability.gunning_fog),
     ("/api/lines", Readability.lines),
     ("/api/paragraphs", Readability.paragraphs),

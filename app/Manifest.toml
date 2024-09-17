@@ -2,7 +2,7 @@
 
 julia_version = "1.10.4"
 manifest_format = "2.0"
-project_hash = "aee9b1a24e1d6ebd6588875bd626d17e5ffe046c"
+project_hash = "6f4a061ef81cc00c8d04ce73464197bbd35c715d"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
@@ -239,9 +239,9 @@ deps = ["SHA"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[deps.Readability]]
-git-tree-sha1 = "2633a5cc1e7a6014af8cd1785cdebf4c44bdf021"
+git-tree-sha1 = "cced47165472f7ab43cce8fd40c9d7a7d4160a9e"
 uuid = "4455ec5f-b558-4ef1-b6d8-c3694046c382"
-version = "0.4.0"
+version = "0.5.0"
 
 [[deps.Reexport]]
 git-tree-sha1 = "45e428421666073eab6f2da5c9d310d99bb12f9b"
