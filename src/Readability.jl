@@ -1,7 +1,7 @@
 """
 # Readability.jl
 
-Julia package for computing readability scores.
+Julia package for computing readability scores and text statistics.
 
 ## Functions:
 
@@ -78,4 +78,4 @@ for file in [
     include(file)
 end
 
-end
+end # Readability.jl

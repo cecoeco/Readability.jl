@@ -2,7 +2,6 @@
 @import "fonts.css";
 
 :root {
-  --theme-hue: 340;
   font-family: "Roboto Slab", sans-serif;
   font-optical-sizing: auto;
   font-feature-settings: "liga" 1, "calt" 1;

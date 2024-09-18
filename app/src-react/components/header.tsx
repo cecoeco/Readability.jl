@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "../assets/css/header.css";
-
 import GitHub from "../assets/svgs/github.svg?react";
 import Sun from "../assets/svgs/sun.svg?react";
 import Moon from "../assets/svgs/moon.svg?react";

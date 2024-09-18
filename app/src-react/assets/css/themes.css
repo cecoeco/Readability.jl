@@ -63,3 +63,7 @@
   --scrollbar-color-hover: hsla(var(--theme-hue), 100%, 83%, 0.5);
   --scrollbar-color-active: hsla(var(--theme-hue), 100%, 83%, 0.75);
 }
+
+:root {
+  --theme-hue: 25;
+}
