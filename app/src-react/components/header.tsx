@@ -50,7 +50,6 @@ const Header: React.FC = () => {
           href="https://github.com/cecoeco/Readability.jl"
           className="header-link"
           target="_blank"
-          rel="noreferrer"
         >
           <h1 className="header-title" title="Readability.jl">
             Readability.jl
@@ -60,7 +59,6 @@ const Header: React.FC = () => {
           href={`https://github.com/cecoeco/Readability.jl/releases/tag/${latestVersion}`}
           className="header-link"
           target="_blank"
-          rel="noreferrer"
         >
           <small className="header-subtitle" title="Software Version">
             {latestVersion}
@@ -72,7 +70,6 @@ const Header: React.FC = () => {
           title="GitHub"
           href="https://github.com/cecoeco/Readability.jl"
           target="_blank"
-          rel="noopener noreferrer"
           className="github-link"
         >
           <GitHub className="github-icon" />
@@ -81,14 +78,9 @@ const Header: React.FC = () => {
           className="theme-button"
           onClick={toggleTheme}
           title="Toggle theme"
-          role="switch"
           aria-label="Toggle theme"
         >
-          {isLightTheme ? (
-            <Sun className="theme-button-icon" />
-          ) : (
-            <Moon className="theme-button-icon" />
-          )}
+          {isLightTheme ? (<Sun className="theme-button-icon" />) : (<Moon className="theme-button-icon" />)}
         </button>
       </nav>
     </header>
