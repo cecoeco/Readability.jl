@@ -16,5 +16,5 @@ Julia package that analyzes the difficulty of texts using different indexes like
 use this command in the Julia REPL:
 
 ```julia
-using Pkg; Pkg.add("TextCoder")
+using Pkg; Pkg.add("Readability")
 ```
