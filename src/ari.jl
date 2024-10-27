@@ -1,5 +1,5 @@
 """
-    ari(text::String)
+    ari(text::String)::Int
 
 Returns the Automated Readability Index (ARI) of `text`.
 

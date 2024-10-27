@@ -55,8 +55,10 @@ function serve_reactjs(; build_directory::String)::Nothing
     for path in Base.Filesystem.readdir(build_directory; join=true)
         filename::String = Base.Filesystem.basename(path)
         if filename == "index.html"
-            Oxygen.get("/") do
-                Oxygen.file(path)
+            for page in ["/", "*"]
+                Oxygen.get(page) do
+                    Oxygen.file(path)
+                end
             end
         else
             Oxygen.get("/$filename") do

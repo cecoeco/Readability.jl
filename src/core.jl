@@ -1,5 +1,5 @@
 """
-    characters(text::String)
+    characters(text::String)::Int
 
 Returns the number of characters in `text`.
 """
@@ -8,7 +8,7 @@ function characters(text::String)::Int
 end
 
 """
-    characters_per_word(text::String)
+    characters_per_word(text::String)::Number
 
 Returns the number of characters per word or the average word length in `text`.
 """
@@ -17,7 +17,7 @@ function characters_per_word(text::String)::Number
 end
 
 """
-    sentences(text::String)
+    sentences(text::String)::Int
 
 Returns the number of sentences in `text`.
 """
@@ -26,7 +26,7 @@ function sentences(text::String)::Int
 end
 
 """
-    sentences_per_paragraph(text::String)
+    sentences_per_paragraph(text::String)::Number
 
 Returns the number of sentences per paragraph or the average paragraph length in `text`.
 """
@@ -35,7 +35,7 @@ function sentences_per_paragraph(text::String)::Number
 end
 
 """
-    syllables(text::String)
+    syllables(text::String)::Int
 
 Returns the number of syllables in `text`.
 """
@@ -59,7 +59,7 @@ function syllables(text::String)::Int
 end
 
 """
-    syllables_per_word(text::String)
+    syllables_per_word(text::String)::Number
 
 Returns the number of syllables per word or the average word length in `text`.
 """
@@ -68,7 +68,7 @@ function syllables_per_word(text::String)::Number
 end
 
 """
-    words(text::String)
+    words(text::String)::Int
 
 Returns the number of words in `text`.
 """
@@ -77,7 +77,7 @@ function words(text::String)::Int
 end
 
 """
-    words_per_sentence(text::String)
+    words_per_sentence(text::String)::Number
 
 Returns the number of words per sentence or the sentence length in `text`.
 """
@@ -86,7 +86,7 @@ function words_per_sentence(text::String)::Number
 end
 
 """
-    lines(text::String)
+    lines(text::String)::Int
 
 Returns the number of lines `text`.
 """
@@ -95,7 +95,7 @@ function lines(text::String)::Int
 end
 
 """
-    paragraphs(text::String)
+    paragraphs(text::String)::Int
 
 Returns the number of paragraphs in `text`.
 """

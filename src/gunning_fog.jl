@@ -1,5 +1,5 @@
 """
-    complex_words(text::String)
+    complex_words(text::String)::Int
 
 Returns the number of complex words (words with 3 or more syllables and not ending in "es", "ed", or "ing") in `text`.
 """
@@ -20,7 +20,7 @@ function percentage_of_complex_words(text::String)::Number
 end
 
 """
-    gunning_fog(text::String)
+    gunning_fog(text::String)::Number
 
 Returns the Gunning Fog index of `text`.
 """

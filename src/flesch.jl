@@ -1,5 +1,5 @@
 """
-    flesch_kincaid_grade_level(text::String)
+    flesch_kincaid_grade_level(text::String)::Float64
 
 Returns the Flesch-Kincaid grade level of `text`.
 """
@@ -8,7 +8,7 @@ function flesch_kincaid_grade_level(text::String)::Float64
 end
 
 """
-    flesch_reading_ease_score(text::String)
+    flesch_reading_ease_score(text::String)::Float64
 
 Returns the Flesch Reading Ease Score of `text`.
 """

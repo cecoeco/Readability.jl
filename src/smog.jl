@@ -1,5 +1,5 @@
 """
-    polysyllabic_words(text::String)
+    polysyllabic_words(text::String)::Int
 
 Returns the number of words with 3 or more syllables in `text`.
 """

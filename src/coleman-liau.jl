@@ -7,7 +7,7 @@ function sentences_per_100_words(text::String)::Number
 end
 
 """
-    coleman_liau(text::String)
+    coleman_liau(text::String)::Number
 
 Returns the Coleman-Liau Index of `text`.
 

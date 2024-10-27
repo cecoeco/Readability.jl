@@ -56,7 +56,7 @@ function dale_chall(text::String)::Number
 end
 
 """
-    spache(text::String)
+    spache(text::String)::Number
 
 Returns the Spache readability score of `text`.
 """
