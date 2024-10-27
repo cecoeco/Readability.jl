@@ -13,16 +13,11 @@ function build_reactjs(; build_directory::String)::Nothing
     end
 
     if Base.Filesystem.isdir(build_directory)
-        Base.CoreLogging.@info "Removing existing build directory..."
         Base.Filesystem.rm(build_directory; force=true, recursive=true)
     end
 
-    Base.CoreLogging.@info "Building frontend..."
-
     Base.run(`$(NodeJS.npm_cmd()) install`)
     Base.run(`$(NodeJS.npm_cmd()) run build`)
-
-    Base.CoreLogging.@info "Finished building frontend"
 
     return nothing
 end

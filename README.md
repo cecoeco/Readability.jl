@@ -18,3 +18,9 @@ use this command in the Julia REPL:
 ```julia
 using Pkg; Pkg.add("Readability")
 ```
+
+## Web App
+
+The `Readability.jl` package can be used without ever having to program via a [web application](https://readability-jl.onrender.com) written in [`React.js`](https://react.dev/) and [`Oxygen.jl`](https://github.com/OxygenFramework/Oxygen.jl)
+
+![Web App GIF](web-application.gif)
